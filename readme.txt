@@ -7,6 +7,7 @@ Stable tag: 1.0
 
 
 == Description ==
+
 BuddyPress Activity Privacy plugin add a privacy level to activity stream component.
 
 The plugin add the ability for members to choose who can read his activity before it posted (Anyone, Logged In Users, My Friends, Admins Only, Only me, My Friends in Group , Group Members ...etc). 
