@@ -42,7 +42,7 @@ add_action( 'bp_include', 'bp_activity_privacy_init' );
 
 /* Put setup procedures to be run when the plugin is activated in the following function */
 function bp_activity_privacy_activate() {
-	global $bp, $wpdb;
+	global $bp;
 
 	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 	if ( !is_plugin_active( 'buddypress/bp-loader.php' ) ) {

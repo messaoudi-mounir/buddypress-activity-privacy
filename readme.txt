@@ -1,6 +1,6 @@
 === BuddyPress Activity Privacy ===
 Contributors: megainfo
-Tags: buddypress,activity,privacy,visilibilty,stream,private,public
+Tags: buddypress,activity,privacy,visibility,stream,private,public,only me,admins only, friends,
 Requires at least: WordPress 3.4, BuddyPress 1.5
 Tested up to: WordPress 3.5 / BuddyPress 1.6
 Stable tag: 1.0
@@ -18,8 +18,12 @@ Download and upload the plugin to your plugins folder.
 
 Then Activate the plugin.
 
-You can choose the privacy level from the select box in the Activity Post Form.
+You can choose the visibility level from the select box in the Activity Post Form.
 
+== Screenshots ==
+1. **Privacy for My Profile Activity** - Allow your users select a visibility level for the activity posted in the profile.
+2. **Privacy for Groups Activity** - Allow your users select a visibility level for the activity posted in a group
+.
 == Frequently Asked Questions ==
 
 #### Where to find support? ####
@@ -32,7 +36,6 @@ Or In GitHub
 https://github.com/dzmounir/buddypress-activity-privacy
 
 == Changelog ==
-
 
 = 1.0 =
 * Initial release.
