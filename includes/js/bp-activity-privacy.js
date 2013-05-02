@@ -4,6 +4,16 @@ if ( typeof jq == "undefined" )
 
 jq(document).ready( function() {
 	
+	//fix the scroll problem
+    jQuery('#whats-new').off('focus');
+    jQuery('#whats-new').on('focus', function(){
+        jQuery("#whats-new-options").css('height','auto');
+        jQuery("form#whats-new-form textarea").animate({
+            height:'50px'
+        });
+        jQuery("#aw-whats-new-submit").prop("disabled", false);
+    });
+
 	jq('span#activity-visibility').prependTo('div#whats-new-submit');
 	jq("input#aw-whats-new-submit").off("click");
 
