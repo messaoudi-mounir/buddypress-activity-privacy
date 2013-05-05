@@ -2,8 +2,8 @@
 Contributors: megainfo
 Tags: buddypress,activity,privacy,visibility,stream,private,public,only me,admins only, friends,
 Requires at least: WordPress 3.4, BuddyPress 1.5
-Tested up to: WordPress 3.5 / BuddyPress 1.6
-Stable tag: 1.0
+Tested up to: WordPress 3.5.1 / BuddyPress 1.7.1
+Stable tag: 1.0.2
 
 
 == Description ==
@@ -36,6 +36,12 @@ Or In GitHub
 https://github.com/dzmounir/buddypress-activity-privacy
 
 == Changelog ==
+
+= 1.0.2 =
+* Fix if no activity, plugin show 'load more' button instead of message.
+
+= 1.0.1 =
+* Fix small CSS problem in Activity Post Form.
 
 = 1.0 =
 * Initial release.

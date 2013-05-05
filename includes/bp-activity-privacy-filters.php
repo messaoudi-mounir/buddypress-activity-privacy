@@ -99,6 +99,6 @@ function bp_visibility_activity_filter( $a, $activities ) {
     $activities_new = array_values( $activities->activities );
     $activities->activities = $activities_new;
     
-    return $activities;
+    return $a;
 }
 add_action( 'bp_has_activities', 'bp_visibility_activity_filter', 10, 2 );
