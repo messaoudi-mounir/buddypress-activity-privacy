@@ -14,7 +14,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @param  [type] $activities [description]
  * @return [type]             [description]
  */
-function bp_visibility_activity_filter( $a, $activities ) {
+function bp_visibility_activity_filter( $has_activities, $activities ) {
     global $bp;
 
     $is_super_admin = is_super_admin();
@@ -99,6 +99,6 @@ function bp_visibility_activity_filter( $a, $activities ) {
     $activities_new = array_values( $activities->activities );
     $activities->activities = $activities_new;
     
-    return $a;
+    return $has_activities;
 }
 add_action( 'bp_has_activities', 'bp_visibility_activity_filter', 10, 2 );
