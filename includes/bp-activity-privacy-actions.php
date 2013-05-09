@@ -28,7 +28,9 @@ function bp_add_visibility_to_activity( $content, $user_id, $activity_id ) {
     */
 
     $levels = bp_get_profile_activity_privacy_levels();
-    if( isset( $_POST['visibility'] ) || in_array( $visibility, $levels ) )
+    $levels += bp_get_groups_activity_privacy_levels();
+
+    if( isset( $_POST['visibility'] ) || in_array( $_POST['visibility'], $levels ) )
         $visibility = $_POST['visibility'];
     
     bp_activity_update_meta( $activity_id, 'activity-privacy', $visibility );
@@ -47,7 +49,8 @@ function bp_add_visibility_to_group_activity( $content, $user_id, $group_id, $ac
     $visibility = 'public';
 
     $levels = bp_get_groups_activity_privacy_levels();
-    if( isset( $_POST['visibility'] ) || in_array( $visibility, $levels ) )
+
+    if( isset( $_POST['visibility'] ) || in_array( $_POST['visibility'], $levels ) )
         $visibility = $_POST['visibility'];
     
     bp_activity_update_meta( $activity_id, 'activity-privacy', $visibility );

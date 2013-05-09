@@ -127,7 +127,7 @@ jq(document).ready( function() {
 			});
 			jq("#aw-whats-new-submit").prop("disabled", true).removeClass('loading');
 
-			//reset the select
+			//reset the privacy selection
 			jq("select#activity-privacy option[selected]").prop('selected', true);
 		});
 

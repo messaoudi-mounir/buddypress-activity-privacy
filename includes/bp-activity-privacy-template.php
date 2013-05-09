@@ -15,7 +15,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 function bp_get_profile_activity_privacy_levels(){
 	global $bp_activity_privacy;
 
-	return apply_filters( 'bp_profile_activity_privacy_levels_filter', $bp_activity_privacy->profile_activity_levels );
+	return apply_filters( 'bp_profile_activity_privacy_levels_filter', $bp_activity_privacy->profile_activity_privacy_levels );
 }
 
 /**
@@ -25,7 +25,7 @@ function bp_get_profile_activity_privacy_levels(){
 function bp_get_groups_activity_privacy_levels(){
 	global $bp_activity_privacy;
 
-	return apply_filters( 'bp_groups_activity_privacy_levels_filter', $bp_activity_privacy->groups_activity_levels );
+	return apply_filters( 'bp_groups_activity_privacy_levels_filter', $bp_activity_privacy->groups_activity_privacy_levels );
 }
 
 /**
@@ -60,7 +60,9 @@ function bp_profile_activity_visibility() {
 		global $bp_activity_privacy;
 
 		$visibility_levels = bp_get_profile_activity_visibility_levels();
-
+		//sort visibility_levels by position 
+		uasort ($visibility_levels, 'bp_activity_privacy_cmp_position');
+		
 	    $html = '<select name="activity-privacy" id="activity-privacy">';
 	    foreach ($visibility_levels as $visibility_level) {
 	        $html .= '<option ' . ( $visibility_level['default'] == true ? " selected='selected'" : '' ) . ' value="' . $visibility_level["id"] . '">' . $visibility_level["label"] . '</option>';
@@ -82,7 +84,9 @@ function bp_groups_activity_visibility() {
 		global $bp_activity_privacy;
 
 		$visibility_levels = bp_get_groups_activity_visibility_levels();
-
+		//sort visibility_levels by position 
+		uasort ($visibility_levels, 'bp_activity_privacy_cmp_position');
+		
 	    $html = '<select name="activity-privacy" id="activity-privacy">';
 	    foreach ($visibility_levels as $visibility_level) {
 	        $html .= '<option ' . ( $visibility_level['default'] == true ? " selected='selected'" : '' ) . ' value="' . $visibility_level["id"] . '">' . $visibility_level["label"] . '</option>';
@@ -91,3 +95,6 @@ function bp_groups_activity_visibility() {
 
 	    return apply_filters( 'bp_get_groups_activity_visibility', $html );
 	}
+
+
+
