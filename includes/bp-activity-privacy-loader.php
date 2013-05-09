@@ -167,7 +167,7 @@ class BP_Activity_Privacy {
 		include( BP_ACTIVITY_PRIVACY_PLUGIN_DIR . '/includes/bp-activity-privacy-cssjs.php' );
 		include( BP_ACTIVITY_PRIVACY_PLUGIN_DIR . '/includes/bp-activity-privacy-ajax.php' );
 
-		// fix / integrations with some plugins
+		// fix / integration with some plugins
 		include( BP_ACTIVITY_PRIVACY_PLUGIN_DIR . '/includes/bp-activity-privacy-integrations.php' );
 
 

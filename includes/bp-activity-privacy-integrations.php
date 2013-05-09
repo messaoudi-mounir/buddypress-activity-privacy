@@ -73,7 +73,7 @@ if(function_exists('bp_follow_is_following')) {
 	function bp_get_profile_follow_activity_visibility_levels($profile_activity_visibility_levels){
 		$profile_activity_visibility_levels ['follow'] = array(
 		        'id'      => 'followers',
-		        'label'   => __( 'Followers', 'bp-activity-privacy' ),
+		        'label'   => __( 'My Followers', 'bp-activity-privacy' ),
 		        'default' => false,
 		        'position' => 30
 		);
@@ -85,15 +85,15 @@ if(function_exists('bp_follow_is_following')) {
 	function bp_get_groups_follow_activity_visibility_levels($groups_activity_visibility_levels){
 		$groups_activity_visibility_levels ['followers'] = array(
 		        'id'      => 'followers',
-		        'label'   => __( 'Followers', 'bp-activity-privacy' ),
+		        'label'   => __( 'My Followers', 'bp-activity-privacy' ),
 		        'default' => false,
-		        'position' => 30
+		        'position' => 35
 		);
 		$groups_activity_visibility_levels ['groupfollowers'] = array(
 		        'id'      => 'groupfollowers',
-		        'label'   => __( 'My Followers in group', 'bp-activity-privacy' ),
+		        'label'   => __( 'My Followers in Group', 'bp-activity-privacy' ),
 		        'default' => false,
-		        'position' => 31
+		        'position' => 45
 		);
 
 		return $groups_activity_visibility_levels;
