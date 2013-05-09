@@ -10,5 +10,17 @@ Version 1.0.1 ( may 2, 2013 )
 - Fix small CSS problem in Activity Post Form.
 
 Version 1.0.2 ( may 5, 2013 )
+--------------------------------------------------------------
+
 - Fix if no activity, plugin show 'load more' button instead of message.
+
+
+
+Version 1.0.3 ( may 09, 2013 ) 
+--------------------------------------------------------------
+
+- Integration With Buddypress Follow plugin :P.
+- Integration With Buddypress Activity Plus plugin :XD.
+- Fix the array of privacy levels.
+- Add More Filters to make plugin extensible for new privacy levels ( Check  bp-activity-privacy-integrations.php ).
 

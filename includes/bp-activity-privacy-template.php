@@ -86,7 +86,7 @@ function bp_groups_activity_visibility() {
 		$visibility_levels = bp_get_groups_activity_visibility_levels();
 		//sort visibility_levels by position 
 		uasort ($visibility_levels, 'bp_activity_privacy_cmp_position');
-		
+
 	    $html = '<select name="activity-privacy" id="activity-privacy">';
 	    foreach ($visibility_levels as $visibility_level) {
 	        $html .= '<option ' . ( $visibility_level['default'] == true ? " selected='selected'" : '' ) . ' value="' . $visibility_level["id"] . '">' . $visibility_level["label"] . '</option>';
@@ -95,6 +95,3 @@ function bp_groups_activity_visibility() {
 
 	    return apply_filters( 'bp_get_groups_activity_visibility', $html );
 	}
-
-
-

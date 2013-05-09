@@ -170,8 +170,6 @@ class BP_Activity_Privacy {
 		// fix / integration with some plugins
 		include( BP_ACTIVITY_PRIVACY_PLUGIN_DIR . '/includes/bp-activity-privacy-integrations.php' );
 
-
-	
 		// As an follow of how you might do it manually, let's include the functions used
 		// on the WordPress Dashboard conditionally:	
 		if ( is_admin() || is_network_admin() ) {
