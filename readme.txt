@@ -38,8 +38,8 @@ You can choose the visibility level from the select box in the Activity Post For
 2. **Privacy for Groups Activity** - Allow your users select a visibility level for the activity posted in the group.
 3. **Integration with BuddyPress Follow plugin ** - Allow your users select a visibility level (My Followers) for the activity posted in the profile.
 4. **Integration with BuddyPress Follow plugin for groups ** - Allow your users select a visibility level (My Followers In Group ) for the activity posted in the group.
-== Frequently Asked Questions ==
 5. **Integration with BuddyPress Activity Plus plugin** - Allow your users select a visibility level  for the activity posted with Buddypress Activity plus.
+== Frequently Asked Questions ==
 
 == Frequently Asked Questions ==
 
