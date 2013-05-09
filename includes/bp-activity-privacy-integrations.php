@@ -10,12 +10,10 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 
 // Integration of BP Activity Privacy with Buddypress Followers
-if(function_exists('bp_follow_is_following')) {
+if( function_exists('bp_follow_is_following') ) {
 
 	add_filter('bp_more_visibility_activity_filter', 'bp_follow_visibility_activity', 10, 3);
 	function bp_follow_visibility_activity($remove_from_stream, $visibility, $activity){
-		
-
 		$bp_loggedin_user_id = bp_loggedin_user_id();
 
 		switch ($visibility) {
@@ -100,48 +98,54 @@ if(function_exists('bp_follow_is_following')) {
 	}
 }
 
+
 // Fix/Integration of BP Activity Privacy with Buddypress Activity Plus
-add_action( 'wp_footer', 'bp_activity_privacy_fix_bp_activity_plus' );
-function bp_activity_privacy_fix_bp_activity_plus() {
-?>
-<script type="text/javascript">
-(function($){
-$(function() {
 
-	$form = $("#whats-new-form");
-	$text = $form.find('textarea[name="whats-new"]');
+if( function_exists('bpfb_plugin_init') ) {
 
-	//remove event handler previously attached to #bpfb_submit
-	$("#bpfb_submit").die( "click" );
-	$(document).delegate("#bpfb_submit", 'click', function (event) {
-		event.preventDefault();
-		var params = _bpfbActiveHandler.get();
-		var group_id = $('#whats-new-post-in').length ? $('#whats-new-post-in').val() : 0;
-		
-		$.post(ajaxurl, {
-			"action": "bpfb_update_activity_contents", 
-			"data": params, 
-			// add visibility level to the ajax post
-			"visibility" : $("select#activity-privacy").val(),
-			"content": $text.val(), 
-			"group_id": group_id
-		}, function (data) {
-			_bpfbActiveHandler.destroy();
-			$text.val('');
-			$('#activity-stream').prepend(data.activity);
-			/**
-			 * Handle image scaling in previews.
-			 */
-			$(".bpfb_final_link img").each(function () {
-				$(this).width($(this).parents('div').width());
+	add_action( 'wp_footer', 'bp_activity_privacy_fix_bp_activity_plus' );
+	function bp_activity_privacy_fix_bp_activity_plus() {
+	?>
+	<script type="text/javascript">
+	(function($){
+	$(function() {
+
+		$form = $("#whats-new-form");
+		$text = $form.find('textarea[name="whats-new"]');
+
+		//remove event handler previously attached to #bpfb_submit
+		$("#bpfb_submit").die( "click" );
+		$(document).delegate("#bpfb_submit", 'click', function (event) {
+			event.preventDefault();
+			var params = _bpfbActiveHandler.get();
+			var group_id = $('#whats-new-post-in').length ? $('#whats-new-post-in').val() : 0;
+			
+			$.post(ajaxurl, {
+				"action": "bpfb_update_activity_contents", 
+				"data": params, 
+				// add visibility level to the ajax post
+				"visibility" : $("select#activity-privacy").val(),
+				"content": $text.val(), 
+				"group_id": group_id
+			}, function (data) {
+				_bpfbActiveHandler.destroy();
+				$text.val('');
+				$('#activity-stream').prepend(data.activity);
+				/**
+				 * Handle image scaling in previews.
+				 */
+				$(".bpfb_final_link img").each(function () {
+					$(this).width($(this).parents('div').width());
+				});
+
+				//reset the privacy selection
+				$("select#activity-privacy option[selected]").prop('selected', true);
 			});
-
-			//reset the privacy selection
-			$("select#activity-privacy option[selected]").prop('selected', true);
 		});
 	});
-});
-})(jQuery);
-</script>
-<?php 
+	})(jQuery);
+	</script>
+	<?php 
+	}
+
 }
