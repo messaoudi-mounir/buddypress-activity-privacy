@@ -10,11 +10,11 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 
 // textdomain loader
-$textdomain_local = BP_ACTIVITY_PRIVACY_PLUGIN_DIR . '/languages/bp-activity-privacy-' . get_locale() . '.mo';
+$textdomain_local = BP_ACTIVITY_PRIVACY_PLUGIN_DIR . '/languages/buddypress-activity-privacy-' . get_locale() . '.mo';
 if ( file_exists( $textdomain_local ) )
 	load_textdomain( 'bp-activity-privacy', $textdomain_local );
 else{
-	$textdomain_global = trailingslashit( WP_LANG_DIR ) . 'bp-activity-privacy-' . get_locale() . '.mo';
+	$textdomain_global = trailingslashit( WP_LANG_DIR ) . 'buddypress-activity-privacy-' . get_locale() . '.mo';
 	if( file_exists( $textdomain_global ) )
 	load_textdomain( 'bp-activity-privacy', $textdomain_global );
 }
