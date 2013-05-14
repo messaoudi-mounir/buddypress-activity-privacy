@@ -24,3 +24,9 @@ Version 1.0.3 ( may 09, 2013 )
 - Fix the array of privacy levels.
 - Add More Filters to make plugin extensible for new privacy levels ( Check  bp-activity-privacy-integrations.php ).
 
+
+
+Version 1.0.4 ( may 14, 2013 ) 
+--------------------------------------------------------------
+
+- Fix localization load.
