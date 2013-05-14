@@ -56,6 +56,7 @@ https://github.com/dzmounir/buddypress-activity-privacy
 
 = 1.0.4.2 =
 * Fix Privacy selectbox load group privacy in profile page.
+* Add Spanish tranlation (thanks to Andrés Felipe)
 
 = 1.0.4.1 =
 * Fix localization load (add param to load_textdomain).
