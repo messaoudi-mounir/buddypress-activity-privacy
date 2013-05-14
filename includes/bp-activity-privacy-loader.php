@@ -17,7 +17,6 @@ else{
 	if( file_exists( $textdomain_global ) )
 	load_textdomain( $textdomain_global );
 }
-
 	
 /**
  * BP_Activity_Privacy Class
