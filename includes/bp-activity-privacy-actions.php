@@ -63,7 +63,7 @@ add_action( 'bp_groups_posted_update', 'bp_add_visibility_to_group_activity', 10
  */
 function bp_add_activitiy_visibility_selectbox() {
 	echo '<span name="activity-visibility" id="activity-visibility">';
-	_e( 'Privacy: ', 'bp-activity-privacy' ); 
+	_e( 'Privacy: ', 'bp-activity-privacy' );
 	if ( bp_is_group_home() )
 		bp_groups_activity_visibility();
 	else 

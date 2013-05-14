@@ -186,10 +186,10 @@ class BP_Activity_Privacy {
 	}
 }
 
-function bp_activity_load_core() {
+function bp_activity_privacy_load_core() {
 	global $bp, $bp_activity_privacy;
 
 	$bp_activity_privacy = new BP_Activity_Privacy;
-	do_action('bp_activity_load_core');
+	do_action('bp_activity_privacy_load_core');
 }
-add_action( 'bp_loaded', 'bp_activity_load_core', 5 );
+add_action( 'bp_loaded', 'bp_activity_privacy_load_core', 5 );
