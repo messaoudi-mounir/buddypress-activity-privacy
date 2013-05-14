@@ -7,9 +7,10 @@
  
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
+echo BP_ACTIVITY_PRIVACY_PLUGIN_DIR . '/languages/bp-activity-privacy-' . get_locale() . '.mo' ;
 
-if ( file_exists( BP_ACTIVITY_PRIVACY_PLUGIN_DIR . '/languages/' . get_locale() . '.mo' ) )
-	load_textdomain( 'bp-activity-privacy', BP_ACTIVITY_PRIVACY_PLUGIN_DIR . '/languages/' . get_locale() . '.mo' );
+if ( file_exists( BP_ACTIVITY_PRIVACY_PLUGIN_DIR . '/languages/bp-activity-privacy-' . get_locale() . '.mo' ) )
+	load_textdomain( 'bp-activity-privacy', BP_ACTIVITY_PRIVACY_PLUGIN_DIR . '/languages/bp-activity-privacy-' . get_locale() . '.mo' );
 	
 
 /**
