@@ -7,12 +7,18 @@
  
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
-echo BP_ACTIVITY_PRIVACY_PLUGIN_DIR . '/languages/bp-activity-privacy-' . get_locale() . '.mo' ;
 
-if ( file_exists( BP_ACTIVITY_PRIVACY_PLUGIN_DIR . '/languages/bp-activity-privacy-' . get_locale() . '.mo' ) )
-	load_textdomain( 'bp-activity-privacy', BP_ACTIVITY_PRIVACY_PLUGIN_DIR . '/languages/bp-activity-privacy-' . get_locale() . '.mo' );
+// textdomain loader
+$textdomain_local = BP_ACTIVITY_PRIVACY_PLUGIN_DIR . '/languages/bp-activity-privacy-' . get_locale() . '.mo';
+if ( file_exists( $textdomain_local ) )
+	load_textdomain( $textdomain_local );
+else{
+	$textdomain_global = trailingslashit( WP_LANG_DIR ) . '/bp-activity-privacy-' . get_locale() . '.mo';
+	if( file_exists( $textdomain_global ) )
+	load_textdomain( $textdomain_global );
+}
+
 	
-
 /**
  * BP_Activity_Privacy Class
  */
