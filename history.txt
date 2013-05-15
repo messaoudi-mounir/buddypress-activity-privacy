@@ -39,5 +39,11 @@ Version 1.0.4.2 ( may 14, 2013 )
 --------------------------------------------------------------
 
 - Fix Privacy selectbox load group privacy in profile page.
-- Add spanish translation (thanks to Andrés Felipe)
+- Add spanish translation (thanks to Andrés Felipe).
 
+
+Version 1.0.4.3 ( may 15, 2013 ) 
+--------------------------------------------------------------
+
+- Fix Privacy selectbox.
+- Add french tranlation.

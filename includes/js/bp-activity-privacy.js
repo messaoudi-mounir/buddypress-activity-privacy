@@ -18,9 +18,9 @@ jq(document).ready( function() {
 	jq("input#aw-whats-new-submit").off("click");
 
 	var selected_item_id = jq("select#whats-new-post-in").val();
+	jq("select#whats-new-post-in").data('selected', selected_item_id );
 	//if selected item is not 'My profil'
 	if( selected_item_id != undefined && selected_item_id != 0 ){
-		jq("select#whats-new-post-in").data('selected', selected_item_id );
 		jq('select#activity-privacy').replaceWith(visibility_levels.groups);
 	}
 

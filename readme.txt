@@ -3,7 +3,7 @@ Contributors: megainfo
 Tags: buddypress,activity,privacy,visibility,stream,private,public,only me,admins only, friends,
 Requires at least: WordPress 3.4, BuddyPress 1.5
 Tested up to: WordPress 3.5.1 / BuddyPress 1.7.1
-Stable tag: 1.0.4.2
+Stable tag: 1.0.4.3
 
 
 == Description ==
@@ -53,10 +53,13 @@ Or In GitHub
 https://github.com/dzmounir/buddypress-activity-privacy
 
 == Changelog ==
+= 1.0.4.3 =
+* Fix Privacy selectbox.
+* Add french tranlation.
 
 = 1.0.4.2 =
 * Fix Privacy selectbox load group privacy in profile page.
-* Add Spanish tranlation (thanks to Andrés Felipe)
+* Add Spanish tranlation (thanks to Andrés Felipe).
 
 = 1.0.4.1 =
 * Fix localization load (add param to load_textdomain).
