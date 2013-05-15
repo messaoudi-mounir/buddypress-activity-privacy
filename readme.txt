@@ -53,6 +53,7 @@ Or In GitHub
 https://github.com/dzmounir/buddypress-activity-privacy
 
 == Changelog ==
+
 = 1.0.4.3 =
 * Fix Privacy selectbox.
 * Add french tranlation.
