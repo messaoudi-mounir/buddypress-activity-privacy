@@ -3,9 +3,9 @@
 Plugin Name: BuddyPress Activity Privacy
 Plugin URI: 
 Description: BP Activity Privacy add the ability for members to choose who can read his activity before it posted !
-Version: 1.0.4.3
+Version: 1.2
 Requires at least:  WP 3.4, BuddyPress 1.5
-Tested up to: BuddyPress 1.5, 1.7, 1.7.1
+Tested up to: BuddyPress 1.5, 1.8
 License: GNU General Public License 2.0 (GPL) http://www.gnu.org/licenses/gpl.html
 Author: Meg@Info
 Author URI: http://profiles.wordpress.org/megainfo 
@@ -16,7 +16,7 @@ Network: true
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /*************************************************************************************************************
- --- BuddyPress Activity Privacy 1.0.4.3 ---
+ --- BuddyPress Activity Privacy 1.2 ---
  *************************************************************************************************************/
 
 // Define a constant that can be checked to see if the component is installed or not.
@@ -24,7 +24,7 @@ define( 'BP_ACTIVITY_PRIVACY_IS_INSTALLED', 1 );
 
 // Define a constant that will hold the current version number of the component
 // This can be useful if you need to run update scripts or do compatibility checks in the future
-define( 'BP_ACTIVITY_PRIVACY_VERSION', '1.0.4.3' );
+define( 'BP_ACTIVITY_PRIVACY_VERSION', '1.2' );
 
 // Define a constant that we can use to construct file paths throughout the component
 define( 'BP_ACTIVITY_PRIVACY_PLUGIN_DIR', dirname( __FILE__ ) );

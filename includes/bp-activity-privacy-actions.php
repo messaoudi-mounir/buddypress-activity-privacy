@@ -30,8 +30,8 @@ function bp_add_visibility_to_activity( $content, $user_id, $activity_id ) {
     $levels = bp_get_profile_activity_privacy_levels();
     $levels += bp_get_groups_activity_privacy_levels();
 
-    if( isset( $_POST['visibility'] ) || in_array( $_POST['visibility'], $levels ) )
-        $visibility = $_POST['visibility'];
+    if( isset( $_POST['visibility'] ) && in_array( esc_attr( $_POST['visibility'] ), $levels ) )
+        $visibility = esc_attr($_POST['visibility']);
     
     bp_activity_update_meta( $activity_id, 'activity-privacy', $visibility );
 }
@@ -50,8 +50,8 @@ function bp_add_visibility_to_group_activity( $content, $user_id, $group_id, $ac
 
     $levels = bp_get_groups_activity_privacy_levels();
 
-    if( isset( $_POST['visibility'] ) || in_array( $_POST['visibility'], $levels ) )
-        $visibility = $_POST['visibility'];
+    if( isset( $_POST['visibility'] ) && in_array( esc_attr( $_POST['visibility'] ), $levels ) )
+        $visibility = esc_attr($_POST['visibility']);
     
     bp_activity_update_meta( $activity_id, 'activity-privacy', $visibility );
 }
@@ -71,3 +71,36 @@ function bp_add_activitiy_visibility_selectbox() {
 	echo '</span>';
 }
 add_action('bp_activity_post_form_options','bp_add_activitiy_visibility_selectbox');
+
+
+function bp_update_activitiy_visibility_selectbox() {
+    if( bp_activity_user_can_delete() ) {
+        global $bp;
+        $visibility = bp_activity_get_meta( bp_get_activity_id(), 'activity-privacy' );
+
+        global $bp_activity_privacy;
+        $group_id = bp_get_activity_item_id();
+
+        // if is not a activity group 
+        if( !isset( $group_id ) || $group_id == 0 )
+            $visibility_levels = bp_get_profile_activity_visibility_levels();   
+        else
+            $visibility_levels = bp_get_groups_activity_visibility_levels();
+        
+        //sort visibility_levels by position 
+        uasort ($visibility_levels, 'bp_activity_privacy_cmp_position');
+
+        $html = '<select class="bp-ap-selectbox">';
+        foreach ($visibility_levels as $visibility_level) {
+            $html .= '<option ' . ( $visibility_level['id'] == $visibility ? " selected='selected'" : '' ) . ' value="' . $visibility_level["id"] . '">' . $visibility_level["label"] . '</option>';
+        }
+        $html .= '</select>';
+
+        $html = apply_filters( 'bp_get_update_activitiy_visibility_selectbox', $html );
+        echo $html;
+    }
+
+
+}
+//add_action('bp_activity_time_since', 'bp_update_activitiy_visibility_selectbox',10 ,1);
+add_action('bp_activity_entry_meta', 'bp_update_activitiy_visibility_selectbox',10);

@@ -16,12 +16,13 @@ if ( !defined( 'ABSPATH' ) ) exit;
  */
 function bp_visibility_activity_filter( $has_activities, $activities ) {
     global $bp;
-
+   
     $is_super_admin = is_super_admin();
     $bp_displayed_user_id = bp_displayed_user_id();
     $bp_loggedin_user_id = bp_loggedin_user_id();
     
     foreach ( $activities->activities as $key => $activity ) {
+
         if( $bp_loggedin_user_id == $activity->user_id  ) 
             continue;
         $visibility = bp_activity_get_meta( $activity->id, 'activity-privacy' );
@@ -96,9 +97,60 @@ function bp_visibility_activity_filter( $has_activities, $activities ) {
         }
     }
 
+    
     $activities_new = array_values( $activities->activities );
+
     $activities->activities = $activities_new;
     
     return $has_activities;
 }
 add_action( 'bp_has_activities', 'bp_visibility_activity_filter', 10, 2 );
+
+
+
+
+//add_filter( 'bp_get_last_activity', 'bp_activity_privacy_last_activity', 10, 1);
+function bp_activity_privacy_last_activity( $last_activity ){
+    if( isset($last_activity) ){
+        $has_activities = false;
+        $activities = new stdClass();
+        $activities->activities = array();
+        $activities->activities[] = $last_activity;
+        bp_visibility_activity_filter($has_activities, $activities);
+
+        if ( empty($activities) )
+            $last_activity = null;
+    }
+
+    return $last_activity;
+}
+
+add_filter( 'bp_get_activity_latest_update', 'bp_activity_privacy_latest_update', 10, 1);
+function bp_activity_privacy_latest_update( $latest_update ){
+
+    $user_id = bp_displayed_user_id();
+
+    if ( bp_is_user_inactive( $user_id ) )
+        return $latest_update;
+
+    if ( !$update = bp_get_user_meta( $user_id, 'bp_latest_update', true ) )
+        return $latest_update;
+
+    $activity_id = $update['id'];
+    $activity = bp_activity_get_specific( array( 'activity_ids' => $activity_id ) );
+
+    // single out the activity
+    $activity_single = $activity["activities"][0];
+
+    $has_activities = false;
+    $activities = new stdClass();
+    $activities->activities = array();
+    $activities->activities[] = $activity_single;
+
+    bp_visibility_activity_filter($has_activities, $activities);
+
+    if ( empty( $activities->activities ) )
+        $latest_update = null;
+
+    return $latest_update;
+}

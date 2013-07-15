@@ -1,0 +1,16 @@
+.bp-ap-selectbox{
+      padding: 2px;
+      font-size: 12px;
+      border: 0;
+      height: 24px;
+      border-radius: 3px;
+      border: none; 
+      overflow: hidden;
+      color: rgb(85, 85, 85);
+      border: 1px solid #fff;
+      background:  #f4f4f4;
+}
+
+.bp-ap-selectbox:hover{
+      border: 1px solid #ccc;
+}

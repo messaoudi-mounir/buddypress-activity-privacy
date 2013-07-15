@@ -47,3 +47,9 @@ Version 1.0.4.3 ( may 15, 2013 )
 
 - Fix Privacy selectbox.
 - Add french tranlation.
+
+Version 1.2 ( Jui 15, 2013 ) 
+--------------------------------------------------------------
+
+- Member can now change the visibility of the old activity.
+- Fix visibility of the last activity (in member header).

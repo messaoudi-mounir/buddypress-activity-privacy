@@ -3,15 +3,32 @@ if ( typeof jq == "undefined" )
 
 
 jq(document).ready( function() {
-	
+	jq('.bp-ap-selectbox').change(function(event) {
+		var target = jq(event.target);
+    	var parent = target.closest('.activity-item');
+    	var parent_id = parent.attr('id').substr( 9, parent.attr('id').length );
+
+        jq.post( ajaxurl, {
+			action: 'update_activity_privacy',
+			'cookie': bp_get_cookies(),
+			'visibility': jq(this).val(),
+			'id': parent_id 
+			
+		},
+		function(response) {
+		});
+
+		return false;
+	});
+
 	//fix the scroll problem
-    jQuery('#whats-new').off('focus');
-    jQuery('#whats-new').on('focus', function(){
-        jQuery("#whats-new-options").css('height','auto');
-        jQuery("form#whats-new-form textarea").animate({
+    jq('#whats-new').off('focus');
+    jq('#whats-new').on('focus', function(){
+        jq("#whats-new-options").css('height','auto');
+        jq("form#whats-new-form textarea").animate({
             height:'50px'
         });
-        jQuery("#aw-whats-new-submit").prop("disabled", false);
+        jq("#aw-whats-new-submit").prop("disabled", false);
     });
 
 	jq('span#activity-visibility').prependTo('div#whats-new-submit');

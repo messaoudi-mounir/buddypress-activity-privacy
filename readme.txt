@@ -1,9 +1,9 @@
 === BuddyPress Activity Privacy ===
 Contributors: megainfo
-Tags: buddypress,activity,privacy,visibility,stream,private,public,only me,admins only, friends,
+Tags: buddypress,activity,privacy,visibility,stream,private,public,only me,admins only,friends, followers,vie privée,confidentialité
 Requires at least: WordPress 3.4, BuddyPress 1.5
-Tested up to: WordPress 3.5.1 / BuddyPress 1.7.1
-Stable tag: 1.0.4.3
+Tested up to: WordPress 3.5.1 / BuddyPress 1.8
+Stable tag: 1.2
 
 
 == Description ==
@@ -11,6 +11,12 @@ Stable tag: 1.0.4.3
 BuddyPress Activity Privacy plugin add a privacy level to activity stream component.
 
 The plugin add the ability for members to choose who can read his activity before it posted (Anyone, Logged In Users, My Friends, Admins Only, Only me, My Friends in Group , Group Members ...etc). 
+
+
+What's news In Buddypress Activity Privacy 1.2 ?
+
+- Members can now change the privacy of the activity already posted.
+- Admins can update the privacy of all activities. 
 
 
 What's news In Buddypress Activity Privacy 1.0.3 ?
@@ -39,6 +45,8 @@ You can choose the visibility level from the select box in the Activity Post For
 3. **Integration with BuddyPress Follow plugin ** - Allow your users select a visibility level (My Followers) for the activity posted in the profile.
 4. **Integration with BuddyPress Follow plugin for groups ** - Allow your users select a visibility level (My Followers In Group ) for the activity posted in the group.
 5. **Integration with BuddyPress Activity Plus plugin** - Allow your users select a visibility level  for the activity posted with Buddypress Activity plus.
+6. **Member can update the privacy of the old activity stream (new selectbox in activity meta).
+
 == Frequently Asked Questions ==
 
 == Frequently Asked Questions ==
@@ -53,6 +61,10 @@ Or In GitHub
 https://github.com/dzmounir/buddypress-activity-privacy
 
 == Changelog ==
+
+= 1.2 =
+- Members now can change the privacy of the activity already posted.
+- Admins can change the privacy of all activities. 
 
 = 1.0.4.3 =
 * Fix Privacy selectbox.
