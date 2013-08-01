@@ -48,8 +48,18 @@ Version 1.0.4.3 ( may 15, 2013 )
 - Fix Privacy selectbox.
 - Add french tranlation.
 
-Version 1.2 ( Jui 15, 2013 ) 
+Version 1.1 ( Jul 15, 2013 ) 
 --------------------------------------------------------------
 
 - Member can now change the visibility of the old activity.
 - Fix visibility of the last activity (in member header).
+
+Version 1.1.1 ( Aug 1, 2013 ) 
+--------------------------------------------------------------
+
+- Fix jquery select option on change event ( submit privacy selection on previous items ).
+
+Version 1.1.2 ( Aug 1, 2013 ) 
+--------------------------------------------------------------
+
+- Fix js bug due the use of bp_get_cookies() function (added since bp 1.8).

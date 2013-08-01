@@ -3,18 +3,23 @@ if ( typeof jq == "undefined" )
 
 
 jq(document).ready( function() {
-	jq('.bp-ap-selectbox').change(function(event) {
+	jq('body').on('change', '.bp-ap-selectbox',  function(event) {
 		var target = jq(event.target);
     	var parent = target.closest('.activity-item');
     	var parent_id = parent.attr('id').substr( 9, parent.attr('id').length );
-
+	
+		if (typeof bp_get_cookies == 'function')
+			var cookie = bp_get_cookies();
+    	else 
+    		var cookie = encodeURIComponent(document.cookie);
+    	
         jq.post( ajaxurl, {
 			action: 'update_activity_privacy',
-			'cookie': bp_get_cookies(),
+			'cookie': cookie,
 			'visibility': jq(this).val(),
 			'id': parent_id 
-			
 		},
+
 		function(response) {
 		});
 
@@ -82,9 +87,14 @@ jq(document).ready( function() {
 			object = jq("#whats-new-post-object").val();
 		}
 
+		if (typeof bp_get_cookies == 'function')
+			var cookie = bp_get_cookies();
+    	else 
+    		var cookie = encodeURIComponent(document.cookie);
+
 		jq.post( ajaxurl, {
 			action: 'post_update',
-			'cookie': encodeURIComponent(document.cookie),
+			'cookie': cookie,
 			'_wpnonce_post_update': jq("input#_wpnonce_post_update").val(),
 			'content': content,
 			'visibility': visibility,
