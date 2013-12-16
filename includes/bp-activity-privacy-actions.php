@@ -63,7 +63,7 @@ add_action( 'bp_groups_posted_update', 'bp_add_visibility_to_group_activity', 10
  */
 function bp_add_activitiy_visibility_selectbox() {
 	echo '<span name="activity-visibility" id="activity-visibility">';
-	_e( 'Privacy: ', 'bp-activity-privacy' );
+	/*_e( 'Privacy: ', 'bp-activity-privacy' );*/
 	if ( bp_is_group_home() )
 		bp_groups_activity_visibility();
 	else 
@@ -92,7 +92,9 @@ function bp_update_activitiy_visibility_selectbox() {
 
         $html = '<select class="bp-ap-selectbox">';
         foreach ($visibility_levels as $visibility_level) {
-            $html .= '<option ' . ( $visibility_level['id'] == $visibility ? " selected='selected'" : '' ) . ' value="' . $visibility_level["id"] . '">' . $visibility_level["label"] . '</option>';
+            if( $visibility_level["disabled"] )
+                continue;
+            $html .= '<option class="fa fa-' . $visibility_level["id"] . '" ' . ( $visibility_level['id'] == $visibility ? " selected='selected'" : '' ) . ' value="' . $visibility_level["id"] . '">&nbsp;' . $visibility_level["label"] . '</option>';
         }
         $html .= '</select>';
 
@@ -104,3 +106,14 @@ function bp_update_activitiy_visibility_selectbox() {
 }
 //add_action('bp_activity_time_since', 'bp_update_activitiy_visibility_selectbox',10 ,1);
 add_action('bp_activity_entry_meta', 'bp_update_activitiy_visibility_selectbox',10);
+
+
+add_action('bp_after_activity_loop', 'bp_add_custom_style_selectbox');
+function bp_add_custom_style_selectbox(){
+    ?>
+    <script type="text/javascript">
+
+        jq('select.bp-ap-selectbox').customStyle('2');
+    </script>
+    <?php
+}

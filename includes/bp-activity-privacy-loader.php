@@ -23,7 +23,7 @@ else{
  * BP_Activity_Privacy Class
  */
 class BP_Activity_Privacy {
-
+	
 	var $profile_activity_privacy_levels = array();
 	var $groups_activity_privacy_levels = array();
 
@@ -60,22 +60,25 @@ class BP_Activity_Privacy {
 	            'id'        => 'public',
 	            'label'     => __( 'Anyone', 'bp-activity-privacy' ),
 	            'default'   => true,
-	            'position'  => 10
+	            'position'  => 10,
+	            'disabled'  => false
 	        ),
 	        'loggedin' => array(
-	            'id'      => 'loggedin',
-	            'label'   => __( 'Logged In Users', 'bp-activity-privacy' ),
-	            'default' => false,
-	            'position'  => 20
+	            'id'        => 'loggedin',
+	            'label'     => __( 'Logged In Users', 'bp-activity-privacy' ),
+	            'default'   => false,
+	            'position'  => 20,
+	            'disabled'  => false	            
 	        )
 	    );
 
 	    if ( bp_is_active( 'friends' ) ) {
 	        $this->profile_activity_visibility_levels['friends'] = array(
-	            'id'      => 'friends',
-	            'label'   => __( 'My Friends', 'bp-activity-privacy' ),
-	            'default' => false,
-	            'position'  => 30
+	            'id'        => 'friends',
+	            'label'     => __( 'My Friends', 'bp-activity-privacy' ),
+	            'default'   => false,
+	            'position'  => 30,
+	            'disabled'  => false	            
 	        );
 	    }
 
@@ -83,86 +86,97 @@ class BP_Activity_Privacy {
 	        'id'      => 'adminsonly',
 	        'label'   => __( 'Admins Only', 'bp-activity-privacy' ),
 	        'default' => false,
-	        'position'  => 40
+	        'position'  => 40,
+	        'disabled'  => false	        
 	    );
 
 	    $this->profile_activity_visibility_levels['onlyme'] = array(
-	        'id'      => 'onlyme',
-	        'label'   => __( 'Only me', 'bp-activity-privacy' ),
-	        'default' => false,
-	        'position'  => 50
+	        'id'        => 'onlyme',
+	        'label'     => __( 'Only me', 'bp-activity-privacy' ),
+	        'default'   => false,
+	        'position'  => 50,
+	        'disabled'  => false	        
 	    );
 
 	    $this->groups_activity_visibility_levels = array(
 	        'public' => array(
-	            'id'      => 'public',
-	            'label'   => __( 'Anyone', 'bp-activity-privacy' ),
-	            'default' => true,
-	            'position'  => 10
+	            'id'        => 'public',
+	            'label'     => __( 'Anyone', 'bp-activity-privacy' ),
+	            'default'   => true,
+	            'position'  => 10,
+	            'disabled'  => false           
 	        ),
 	        'loggedin' => array(
-	            'id'      => 'loggedin',
-	            'label'   => __( 'Logged In Users', 'bp-activity-privacy' ),
-	            'default' => false,
-	             'position'  => 20
+	            'id'         => 'loggedin',
+	            'label'      => __( 'Logged In Users', 'bp-activity-privacy' ),
+	            'default'    => false,
+	             'position'  => 20,
+	            'disabled'   => false            
 	        )
 	    );
 
 	    if ( bp_is_active( 'friends' ) ) {
 	        $this->groups_activity_visibility_levels['friends'] = array(
-	            'id'      => 'friends',
-	            'label'   => __( 'My Friends', 'bp-activity-privacy' ),
-	            'default' => false,
-	            'position'  => 30
+	            'id'        => 'friends',
+	            'label'     => __( 'My Friends', 'bp-activity-privacy' ),
+	            'default'   => false,
+	            'position'  => 30,
+	            'disabled'  => false	            
 	        );
 	        if ( bp_is_active( 'groups' ) ) {
 		        $this->groups_activity_visibility_levels['groupfriends'] = array(
-		            'id'      => 'groupfriends',
-		            'label'   => __( 'My Friends in Group', 'bp-activity-privacy' ),
-		            'default' => false,
-		            'position'  => 40
+		            'id'        => 'groupfriends',
+		            'label'     => __( 'My Friends in Group', 'bp-activity-privacy' ),
+		            'default'   => false,
+		            'position'  => 40,
+	            	'disabled'  => false	            
 		        );
 	   		}
 	    }
 
 	    if ( bp_is_active( 'groups' ) ) {
 	        $this->groups_activity_visibility_levels['grouponly'] = array(
-	            'id'      => 'grouponly',
-	            'label'   => __( 'Group Members', 'bp-activity-privacy' ),
-	            'default' => false,
+	            'id'        => 'grouponly',
+	            'label'     => __( 'Group Members', 'bp-activity-privacy' ),
+	            'default'   => false,
 	            'position'  => 50,
+	            'disabled'  => false	            
 	        );
 
 	        $this->groups_activity_visibility_levels['groupmoderators'] = array(
-	            'id'      => 'groupmoderators',
-	            'label'   => __( 'Group Moderators', 'bp-activity-privacy' ),
-	            'default' => false,
+	            'id'        => 'groupmoderators',
+	            'label'     => __( 'Group Moderators', 'bp-activity-privacy' ),
+	            'default'   => false,
 	            'position'  => 60,
+	            'disabled'  => false            
 	        );
 
 	        $this->groups_activity_visibility_levels['groupadmins'] = array(
-	            'id'      => 'groupadmins',
-	            'label'   => __( 'Group Admins', 'bp-activity-privacy' ),
-	            'default' => false,
+	            'id'        => 'groupadmins',
+	            'label'     => __( 'Group Admins', 'bp-activity-privacy' ),
+	            'default'   => false,
 	            'position'  => 70,
+	            'disabled'  => false	            
 	        );
 		}	  
 
 		$this->groups_activity_visibility_levels['adminsonly'] = array(
-	        'id'      => 'adminsonly',
-	        'label'   => __( 'Admins Only', 'bp-activity-privacy' ),
-	        'default' => false,
+	        'id'        => 'adminsonly',
+	        'label'     => __( 'Admins Only', 'bp-activity-privacy' ),
+	        'default'   => false,
 	        'position'  => 80,
+		    'disabled'  => false,        
 	    );
 
 	    $this->groups_activity_visibility_levels['onlyme'] = array(
-	        'id'      => 'onlyme',
-	        'label'   => __( 'Only me', 'bp-activity-privacy' ),
-	        'default' => false,
+	        'id'        => 'onlyme',
+	        'label'     => __( 'Only me', 'bp-activity-privacy' ),
+	        'default'   => false,
 	        'position'  => 90,
+		    'disabled'  => false,        
 	    );      
 
-		 $this->includes();
+		$this->includes();
 	}
 
 	function includes() {
@@ -179,8 +193,9 @@ class BP_Activity_Privacy {
 
 		// As an follow of how you might do it manually, let's include the functions used
 		// on the WordPress Dashboard conditionally:	
-		if ( is_admin() || is_network_admin() ) {
+		if ( is_super_admin() && ( is_admin() || is_network_admin() ) ) {
 			include( BP_ACTIVITY_PRIVACY_PLUGIN_DIR . '/includes/bp-activity-privacy-admin.php' );
+			$this->admin = new BPActivityPrivacy_Admin;
 		}
 		
 	}

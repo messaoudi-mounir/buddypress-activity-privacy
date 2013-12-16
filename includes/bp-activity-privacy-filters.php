@@ -147,10 +147,38 @@ function bp_activity_privacy_latest_update( $latest_update ){
     $activities->activities = array();
     $activities->activities[] = $activity_single;
 
-    bp_visibility_activity_filter($has_activities, $activities);
+    bp_visibility_activity_filter( $has_activities, $activities );
 
     if ( empty( $activities->activities ) )
         $latest_update = null;
 
     return $latest_update;
+}
+
+
+
+add_filter('bp_get_member_latest_update', 'bp_activity_privacy_member_latest_update',10, 1);
+function bp_activity_privacy_member_latest_update( $update_content ){
+    global $members_template;
+
+    $latest_update = bp_get_user_meta( bp_get_member_user_id(), 'bp_latest_update' , true );
+    if ( !empty( $latest_update ) ) {
+        $activity_id = $latest_update['id'];
+        $activity = bp_activity_get_specific( array( 'activity_ids' => $activity_id ) );
+
+        // single out the activity
+        $activity_single = $activity["activities"][0];
+
+        $has_activities = false;
+        $activities = new stdClass();
+        $activities->activities = array();
+        $activities->activities[] = $activity_single;
+
+        bp_visibility_activity_filter( $has_activities, $activities );
+
+        if ( empty( $activities->activities ) )
+            return '';
+ 
+    }
+    return $update_content;
 }

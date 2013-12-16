@@ -8,8 +8,6 @@
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
-
-
 function bp_activity_privacy_cmp_position($a, $b) {
     if ($a['position'] == $b['position']) {
         return 0;

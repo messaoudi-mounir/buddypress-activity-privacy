@@ -63,3 +63,10 @@ Version 1.1.2 ( Aug 1, 2013 )
 --------------------------------------------------------------
 
 - Fix js bug due the use of bp_get_cookies() function (added since bp 1.8).
+
+Version 1.2 (Dec 15, 2013)
+--------------------------------------------------------------
+
+- New Dropdown system with a nice icons ( By Font Awesome http://fontawesome.io/ ).
+- Admin Option Area, Admin can update Enable/Disable privacy level, Sort the privacy levels and change the default privacy level.
+- Fix the visibility of the last activity in members directory and member profile page.

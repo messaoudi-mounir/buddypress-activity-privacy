@@ -2,8 +2,8 @@
 Contributors: megainfo
 Tags: buddypress,activity,privacy,visibility,stream,private,public,only me,admins only,friends, followers,vie privée,confidentialité
 Requires at least: WordPress 3.4, BuddyPress 1.5
-Tested up to: WordPress 3.5.1 / BuddyPress 1.8
-Stable tag: 1.1.2
+Tested up to: WordPress 3.8 / BuddyPress 1.9 beta2
+Stable tag: 1.2
 
 
 == Description ==
@@ -11,6 +11,14 @@ Stable tag: 1.1.2
 BuddyPress Activity Privacy plugin add a privacy level to activity stream component.
 
 The plugin add the ability for members to choose who can read his activity before it posted (Anyone, Logged In Users, My Friends, Admins Only, Only me, My Friends in Group , Group Members ...etc). 
+
+What's news In Buddypress Activity Privacy 1.2 ?
+
+- New Drop down system with a nice icons (font awsome).
+
+- Admin Option Area, Admin can update Enable/Disable privacy level, Sort the privacy levels and change the default privacy level. 
+
+
 
 
 What's news In Buddypress Activity Privacy 1.1 ?
@@ -61,6 +69,11 @@ Or In GitHub
 https://github.com/dzmounir/buddypress-activity-privacy
 
 == Changelog ==
+
+= 1.2 =
+- New Dropdown system with a nice icons ( By Font Awesome http://fontawesome.io/ ).
+- Admin Option Area, Admin can update Enable/Disable privacy level, Sort the privacy levels and change the default privacy level.
+- Fix the visibility of the last activity in members directory and member profile page.
 
 = 1.1.2 =
 - Fix js bug due the use of bp_get_cookies() function (added since bp 1.8).

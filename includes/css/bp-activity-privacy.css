@@ -1,5 +1,117 @@
+/**
+ * http://stackoverflow.com/questions/13082883/aligning-the-background-image-of-a-dropdown-select-option-to-right
+ * http://stackoverflow.com/questions/9542732/how-to-add-a-background-color-to-html-option
+ * @type {[type]}
+ */
+
+span.customStyleSelectBox1 {  
+  margin-left:0px;
+  margin-top:3px; 
+  font-size:12px; 
+  padding:5px 5px 5px 5px; 
+  border-radius: 5px 5px; 
+  line-height: 11px
+} 
+
+span.customStyleSelectBox2 { 
+  margin-left:0px;
+  margin-top:3px; 
+  font-size:12px; 
+  padding:5px 5px 5px 5px; 
+  border-radius: 5px 5px; 
+  line-height: 11px} 
+
+.customStyleSelectBoxInner1, .customStyleSelectBoxInner2 { 
+  padding-right:10px; 
+}
+
+
+#activity-visibility { 
+  border: 1px solid #fff;  
+  padding: 2px; color:#C84C34; 
+}
+
+#activity-visibility:hover { 
+/*  border: 1px solid #CCC; */
+}
+
+
 .bp-ap-selectbox{
-      padding: 2px;
+
+}
+
+.bp-ap-selectbox:hover{
+
+}
+
+
+select#activity-privacy option, select.bp-ap-selectbox option {
+      display: block !important;
+}
+
+.fa-public:before {
+  content: "\f0ac";
+}
+
+.fa-loggedin:before {
+  content: "\f007";
+}
+
+.fa-friends:before{
+  content: "\f005";
+}
+
+.fa-adminsonly:before {
+  content: "\f06e";
+}
+
+.fa-onlyme:before {
+  content: "\f023";
+}
+
+.fa-mygroups:before {
+  content: "\f0c0";
+}
+
+.fa-groupfriends:before {
+  content: "\f123";
+}
+
+.fa-grouponly:before {
+  content: "\f0c0";
+}
+
+.fa-groupmoderators:before {
+   content: "\f132";
+}
+
+.fa-groupadmins:before {
+   content: "\f070";
+ }
+
+
+.fa-followers:before {
+   content:"\f08a"
+}
+
+.fa-followers:before {
+   content:"\f004";
+}
+
+.fa-groupfollowers:before {
+  content:"\f08a";
+}
+
+/*
+
+.flag16.us{background-position:0 -3664px;}
+.flag16.il{background-position:0 -1824px;}
+.flag16.in{background-position:0 -1856px;}
+.flag16.it{background-position:0 -1920px;}
+
+
+.bp-ap-selectbox{
+     padding: 2px;
       font-size: 12px;
       border: 0;
       height: 24px;
@@ -14,3 +126,4 @@
 .bp-ap-selectbox:hover{
       border: 1px solid #ccc;
 }
+*/

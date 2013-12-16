@@ -107,43 +107,50 @@ if( function_exists('bpfb_plugin_init') ) {
 	function bp_activity_privacy_fix_bp_activity_plus() {
 	?>
 	<script type="text/javascript">
-	(function($){
-	$(function() {
 
-		$form = $("#whats-new-form");
-		$text = $form.find('textarea[name="whats-new"]');
+	if ( typeof jq == "undefined" )
+		var jq = jQuery;
+
+	jq(document).ready( function() {
+
+		form = jq("#whats-new-form");
+		text = form.find('textarea[name="whats-new"]');
 
 		//remove event handler previously attached to #bpfb_submit
-		$("#bpfb_submit").die( "click" );
-		$(document).delegate("#bpfb_submit", 'click', function (event) {
+		jq("#bpfb_submit").die( "click" );
+
+		jq(document).delegate("#bpfb_submit", 'click', function (event) {
+
 			event.preventDefault();
 			var params = _bpfbActiveHandler.get();
-			var group_id = $('#whats-new-post-in').length ? $('#whats-new-post-in').val() : 0;
+			var group_id = jq('#whats-new-post-in').length ?jq('#whats-new-post-in').val() : 0;
 			
-			$.post(ajaxurl, {
+			jq.post(ajaxurl, {
 				"action": "bpfb_update_activity_contents", 
 				"data": params, 
 				// add visibility level to the ajax post
-				"visibility" : $("select#activity-privacy").val(),
-				"content": $text.val(), 
+				"visibility" : jq("select#activity-privacy").val(),
+				"content": text.val(), 
 				"group_id": group_id
 			}, function (data) {
 				_bpfbActiveHandler.destroy();
-				$text.val('');
-				$('#activity-stream').prepend(data.activity);
+				text.val('');
+				jq('#activity-stream').prepend(data.activity);
 				/**
 				 * Handle image scaling in previews.
 				 */
-				$(".bpfb_final_link img").each(function () {
-					$(this).width($(this).parents('div').width());
+				jq(".bpfb_final_link img").each(function () {
+					jq(this).width(jq(this).parents('div').width());
 				});
 
 				//reset the privacy selection
-				$("select#activity-privacy option[selected]").prop('selected', true);
+				jq("select#activity-privacy option[selected]").prop('selected', true).trigger('change');
+
+				jq('select.bp-ap-selectbox').customStyle('2');
 			});
 		});
 	});
-	})(jQuery);
+
 	</script>
 	<?php 
 	}

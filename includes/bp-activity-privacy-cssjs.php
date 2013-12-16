@@ -42,6 +42,7 @@ add_action( 'wp_enqueue_scripts', 'bp_activity_privacy_add_js', 1 );
  */
 function bp_activity_privacy_add_css() {
 	global $bp;
+    wp_enqueue_style( 'bp-font-awesome-css', plugins_url( 'css/font-awesome/css/font-awesome.min.css' ,  __FILE__ )); 
     wp_enqueue_style( 'bp-activity-privacy-css', plugins_url( 'css/bp-activity-privacy.css' ,  __FILE__ )); 
 }
 add_action( 'bp_actions', 'bp_activity_privacy_add_css', 1 );

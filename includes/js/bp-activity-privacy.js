@@ -1,8 +1,40 @@
 if ( typeof jq == "undefined" )
 	var jq = jQuery;
 
-
 jq(document).ready( function() {
+
+	jq.fn.extend({
+        customStyle : function(options) {
+
+	        if(!jq.browser.msie || (jq.browser.msie&&jq.browser.version>6)) {
+	            return this.each(function() {
+	            	if ( jq(this).data('customStyle') == undefined ) {
+	            	
+		            	jq(this).data('customStyle', true);	
+		                var currentSelected = jq(this).find(':selected');
+
+		                jq(this).after('<span class="customStyleSelectBox'+options+'"><i class="'+currentSelected.attr("class")+'"></i><span class="customStyleSelectBoxInner'+options+'">'+currentSelected.text()+'</span><i class="fa fa-caret-down"></i></span>').css({position:'absolute', opacity:0,fontSize:jq(this).next().css('font-size')});
+		                var selectBoxSpan = jq(this).next();
+
+		                var selectBoxWidth = parseInt(jq(this).width()) - parseInt(selectBoxSpan.css('padding-left')) -parseInt(selectBoxSpan.css('padding-right'));            
+		                var selectBoxSpanInner = selectBoxSpan.find(':first-child').next();
+		                selectBoxSpan.css({display:'inline-block'});
+		                jq(this).css('width',selectBoxSpan.width());
+		                if(options=="") selectBoxSpanInner.css({width:selectBoxWidth, display:'inline-block'});
+		                var selectBoxHeight = parseInt(selectBoxSpan.height()) + parseInt(selectBoxSpan.css('padding-top')) + parseInt(selectBoxSpan.css('padding-bottom'));
+		                jq(this).height(selectBoxHeight).change(function() {
+		                	selectBoxSpanInner.parent().find('i:first-child').attr('class',  jq(this).find(':selected').attr('class') );
+		                    selectBoxSpanInner.text(jq(this).find(':selected').text()).parent().addClass('changed');
+		                    jq(this).css('width',selectBoxSpan.width());
+		                });
+
+
+	            	}
+	         });
+	        }
+    }
+    }); 
+
 	jq('body').on('change', '.bp-ap-selectbox',  function(event) {
 		var target = jq(event.target);
     	var parent = target.closest('.activity-item');
@@ -40,6 +72,7 @@ jq(document).ready( function() {
 	jq("input#aw-whats-new-submit").off("click");
 
 	var selected_item_id = jq("select#whats-new-post-in").val();
+
 	jq("select#whats-new-post-in").data('selected', selected_item_id );
 	//if selected item is not 'My profil'
 	if( selected_item_id != undefined && selected_item_id != 0 ){
@@ -57,7 +90,8 @@ jq(document).ready( function() {
 				jq('select#activity-privacy').replaceWith(visibility_levels.groups);
 			}
 		}
-
+		jq('select#activity-privacy').next().remove();
+		jq('select#activity-privacy').customStyle('1');
 		jq(this).data('selected',item_id);
 	});
 	
@@ -156,10 +190,14 @@ jq(document).ready( function() {
 			jq("#aw-whats-new-submit").prop("disabled", true).removeClass('loading');
 
 			//reset the privacy selection
-			jq("select#activity-privacy option[selected]").prop('selected', true);
+			jq("select#activity-privacy option[selected]").prop('selected', true).trigger('change');
+			
+			jq('select.bp-ap-selectbox').customStyle('2');
 		});
 
 		return false;
 	});
 
+	jq('select#activity-privacy').customStyle('1');
+	jq('select.bp-ap-selectbox').customStyle('2');
 });

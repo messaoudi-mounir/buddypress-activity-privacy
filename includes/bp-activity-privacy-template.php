@@ -15,7 +15,8 @@ if ( !defined( 'ABSPATH' ) ) exit;
 function bp_get_profile_activity_privacy_levels(){
 	global $bp_activity_privacy;
 
-	return apply_filters( 'bp_profile_activity_privacy_levels_filter', $bp_activity_privacy->profile_activity_privacy_levels );
+	$profile_activity_privacy_levels = bp_get_option( 'bp_ap_profile_activity_privacy_levels', $bp_activity_privacy->profile_activity_privacy_levels );
+	return apply_filters( 'bp_profile_activity_privacy_levels_filter', $profile_activity_privacy_levels );
 }
 
 /**
@@ -25,7 +26,8 @@ function bp_get_profile_activity_privacy_levels(){
 function bp_get_groups_activity_privacy_levels(){
 	global $bp_activity_privacy;
 
-	return apply_filters( 'bp_groups_activity_privacy_levels_filter', $bp_activity_privacy->groups_activity_privacy_levels );
+	$groups_activity_privacy_levels = bp_get_option( 'bp_ap_groups_activity_privacy_levels', $bp_activity_privacy->groups_activity_privacy_levels );
+	return apply_filters( 'bp_groups_activity_privacy_levels_filter', $groups_activity_privacy_levels );
 }
 
 /**
@@ -35,7 +37,8 @@ function bp_get_groups_activity_privacy_levels(){
 function bp_get_profile_activity_visibility_levels() {
 	global $bp_activity_privacy;
 
-	return apply_filters( 'bp_profile_activity_visibility_levels_filter', $bp_activity_privacy->profile_activity_visibility_levels );
+	$profile_activity_visibility_levels = bp_get_option( 'bp_ap_profile_activity_visibility_levels', $bp_activity_privacy->profile_activity_visibility_levels );
+	return apply_filters( 'bp_profile_activity_visibility_levels_filter', $profile_activity_visibility_levels );
 }
 
 /**
@@ -45,7 +48,8 @@ function bp_get_profile_activity_visibility_levels() {
 function bp_get_groups_activity_visibility_levels() {
 	global $bp_activity_privacy;
 
-	return apply_filters( 'bp_groups_activity_visibility_levels_filter', $bp_activity_privacy->groups_activity_visibility_levels );
+	$groups_activity_visibility_levels = bp_get_option( 'bp_ap_groups_activity_visibility_levels', $bp_activity_privacy->groups_activity_visibility_levels );
+	return apply_filters( 'bp_groups_activity_visibility_levels_filter', $groups_activity_visibility_levels );
 }
 
 /**
@@ -65,7 +69,9 @@ function bp_profile_activity_visibility() {
 		
 	    $html = '<select name="activity-privacy" id="activity-privacy">';
 	    foreach ($visibility_levels as $visibility_level) {
-	        $html .= '<option ' . ( $visibility_level['default'] == true ? " selected='selected'" : '' ) . ' value="' . $visibility_level["id"] . '">' . $visibility_level["label"] . '</option>';
+	    	if( $visibility_level["disabled"] )
+	    		continue;
+	        $html .= '<option class="fa fa-' . $visibility_level["id"] . '" ' . ( $visibility_level['default'] == true ? " selected='selected'" : '' ) . ' value="' . $visibility_level["id"] . '">&nbsp;' . $visibility_level["label"] . '</option>';
 	    }
 	    $html .= '</select>';
 
@@ -89,7 +95,9 @@ function bp_groups_activity_visibility() {
 
 	    $html = '<select name="activity-privacy" id="activity-privacy">';
 	    foreach ($visibility_levels as $visibility_level) {
-	        $html .= '<option ' . ( $visibility_level['default'] == true ? " selected='selected'" : '' ) . ' value="' . $visibility_level["id"] . '">' . $visibility_level["label"] . '</option>';
+	    	if( $visibility_level["disabled"] )
+	    		continue;
+	        $html .= '<option  class="fa fa-' . $visibility_level["id"] . '" ' .  ( $visibility_level['default'] == true ? " selected='selected'" : '' ) . ' value="' . $visibility_level["id"] . '">&nbsp;' . $visibility_level["label"] . '</option>';
 	    }
 	    $html .= '</select>';
 
