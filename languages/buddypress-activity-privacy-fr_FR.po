@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: buddypress-activity-privacy\n"
-"POT-Creation-Date: 2013-05-14 00:39-0000\n"
-"PO-Revision-Date: 2013-05-15 13:44-0000\n"
+"POT-Creation-Date: 2013-12-16 19:33-0000\n"
+"PO-Revision-Date: 2013-12-16 19:33-0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: C:\\work\\php\\wamp\\www\\wordpressdev\\wp-content"
 "\\plugins\\buddypress-activity-privacy\n"
 
-#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/loader.php:49
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/loader.php:54
 msgid ""
 "You cannot enable BuddyPress Activity Privacy because <strong>BuddyPress</"
 "strong> is not active. Please install and activate BuddyPress before trying "
@@ -24,56 +24,300 @@ msgstr ""
 "BuddyPress </ strong> n'est pas actif. S'il vous plaît installer et activer "
 "BuddyPress avant d'essayer de réactiver BuddyPress Activity Privacy."
 
-#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-actions.php:66
-msgid "Privacy: "
-msgstr "Confidentialité:"
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:41
+msgid "Welcome to Buddypress Activity Privacy"
+msgstr ""
 
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:42
+msgid "Welcome to BP Activity Privacy"
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:49
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:241
+msgid "BuddyPress Activity Privacy"
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:49
+msgid "BP Activity Privacy"
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:94
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:145
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:419
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:61
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:104
+msgid "Anyone"
+msgstr "Public"
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:101
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:152
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:420
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:68
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:111
+msgid "Logged In Users"
+msgstr "Membres connectés"
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:111
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:162
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:421
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:78
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:121
+msgid "My Friends"
+msgstr "Mes amis"
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:120
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:206
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:87
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:165
+msgid "Admins Only"
+msgstr "Admins uniquement"
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:128
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:214
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:95
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:173
+msgid "Only me"
+msgstr "Moi uniquement"
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:170
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:129
+msgid "My Friends in Group"
+msgstr "Mes amis dans le groupe"
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:181
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:438
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:140
+msgid "Group Members"
+msgstr "Membres du groupe"
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:189
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:439
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:148
+msgid "Group Moderators"
+msgstr "Modérateurs du groupe"
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:197
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:440
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:156
+msgid "Group Admins"
+msgstr "Admins du groupe"
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:222
+msgid "Settings saved."
+msgstr "Paramètres enregistrés."
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:231
+msgid "Settings reseted."
+msgstr "Paramètres réinitialisés."
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:246
+msgid "Profil Activity privacy"
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:248
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:271
+msgid "Please check the box to enable the privacy and Drag&Drop to sort :"
+msgstr ""
+"S'il vous plaît cochez la case pour activer la confidentialité et la glisser-"
+"déposer pour trier:"
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:269
+msgid "Groups Activity privacy"
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:290
+msgid "Save Settings"
+msgstr "Enregistrer"
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:291
+msgid "Reset"
+msgstr "Réinitialiser"
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:380
+#, php-format
+msgid "Welcome to BuddyPress Activity Privacy %s"
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:381
+#, php-format
+msgid ""
+"Thank you for upgrading to the latest version of BP Activity Privacy! <br "
+"\\> BP Activity Privacy %s is ready to manage the activity privacy of your "
+"Site!"
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:382
+#, php-format
+msgid "Version %s"
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:386
+msgid "About"
+msgstr "A propos"
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:391
+msgid "Add Privacy Controls To The BuddyPress Activity Stream!"
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:394
+msgid ""
+"BP Activity Privacy is a BuddyPress plugin who gives users the ability to "
+"restrict who can see their activity posts. "
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:395
+msgid ""
+"It gives each member multiple privacy options on activity posts and should "
+"encourage more confident participation on your social network."
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:400
+#, php-format
+msgid "What&#39; new in %s ?"
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:405
+msgid ""
+"New Dropdown system with a nice icons ( By <a target=\"_BLANK\" href="
+"\"http://fontawesome.io/\">Font Awesome</a> )."
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:406
+msgid ""
+"Administrator now have a finer control to enable/disable the privacy levels, "
+"sort the privacy levels and change the default privacy level."
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:407
+#, php-format
+msgid ""
+"Finally version %s fixes a bug with \"Last acitivity\" visibility in the "
+"members directory and member profile page."
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:413
+msgid "How it's Work ?"
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:417
+msgid ""
+"Once installed and activated, BuddyPress Activity Privacy adds following "
+"privacy controls to the post update box for members:"
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:422
+#, fuzzy
+msgid "Admin Only"
+msgstr "Admins uniquement"
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:423
+#, fuzzy
+msgid "Only Me"
+msgstr "Moi uniquement"
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:425
+msgid ""
+"Certain privacy controls are component-dependent. For example, the \"Friends "
+"Only\" privacy option in the dropdown will not show up unless you have the "
+"Friends component activated in the BuddyPress settings panel."
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:435
+msgid ""
+"When posting within a group the group-specific privacy options will be added "
+"to the dropdown, inlcluding:"
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:437
+#, fuzzy
+msgid "My Friends in a Group"
+msgstr "Mes amis dans le groupe"
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:447
+msgid "Update the Privacy of the ol "
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:451
+msgid ""
+"Members can update the privacy of the old activity stream (new selectbox in "
+"activity meta)."
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:452
+msgid "Admin can also update the privacy of all the old activity stream."
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:457
+msgid "Privacy control for Followers Plugin"
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:461
+msgid "Fully integrated with Buddypress Follow"
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:462
+msgid ""
+"If you have <a href=\"http://wordpress.org/plugins/buddypress-followers/"
+"\">BuddyPress Follow</a> installed in your site, BP Activity Privacy adds "
+"new privacy levels :"
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:464
 #: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-integrations.php:74
 #: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-integrations.php:86
 msgid "My Followers"
 msgstr "Mes suiveurs"
 
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:465
+#, fuzzy
+msgid "My followers in Group"
+msgstr "Mes suiveurs dans le groupe"
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:471
+msgid "Integration for Buddypress Activity Plus Plugin"
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:475
+msgid ""
+"BP Activity Privacy is released with Integration for <a href=\"http://"
+"wordpress.org/plugins/buddypress-activity-plus/\">Buddypress Activity Plus</"
+"a>."
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:480
+msgid "BP Acitivity Privacy Configuration"
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:484
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:494
+msgid "Configure BP Activity Privacy"
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:485
+msgid ""
+"From the settings menu of his WordPress administration, the administrator is "
+"able to configure BP Activity Privacy by :"
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:487
+msgid "Enable/Disable a privacy level."
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:488
+msgid "Sort the privacy levels."
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:489
+msgid "Change the default privacy level."
+msgstr ""
+
+#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:494
+msgid "Go to the BP Activity Privacy Settings page"
+msgstr ""
+
 #: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-integrations.php:92
 msgid "My Followers in Group"
 msgstr "Mes suiveurs dans le groupe"
 
-#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:61
-#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:99
-msgid "Anyone"
-msgstr "Public"
-
-#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:67
-#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:105
-msgid "Logged In Users"
-msgstr "Membres connectés"
-
-#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:76
-#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:114
-msgid "My Friends"
-msgstr "Mes amis"
-
-#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:84
-#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:153
-msgid "Admins Only"
-msgstr "Admins uniquement"
-
-#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:91
-#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:160
-msgid "Only me"
-msgstr "Moi uniquement"
-
-#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:121
-msgid "My Friends in Group"
-msgstr "Mes amis dans le groupe"
-
-#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:131
-msgid "Group Members"
-msgstr "Membres du groupe"
-
-#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:138
-msgid "Group Moderators"
-msgstr "Modérateurs du groupe"
-
-#: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:145
-msgid "Group Admins"
-msgstr "Admins du groupe"
+#~ msgid "Privacy: "
+#~ msgstr "Confidentialité:"
