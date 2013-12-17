@@ -46,7 +46,7 @@ class BPActivityPrivacy_Admin {
 		);
 
 		$this->settings_page = bp_core_do_network_admin() ? 'settings.php' : 'options-general.php';
-	    $hook = add_submenu_page( $this->settings_page, __( 'BuddyPress Activity Privacy', 'bp-smp' ), __( 'BP Activity Privacy', 'bp-smp' ), 'manage_options', 'bp-activity-privacy', array( &$this, 'admin_page' ) );
+	    $hook = add_submenu_page( $this->settings_page, __( 'BuddyPress Activity Privacy', 'bp-activity-privacy' ), __( 'BP Activity Privacy', 'bp-activity-privacy' ), 'manage_options', 'bp-activity-privacy', array( &$this, 'admin_page' ) );
 
 	    add_action( "admin_print_styles-$hook", 'bp_core_add_admin_menu_styles' );
 	    add_action( "admin_print_scripts-$hook", array( &$this, 'enqueue_scripts' ) );
@@ -354,7 +354,7 @@ class BPActivityPrivacy_Admin {
 			.about-wrap .images-stagger-right img.image-30:nth-child(2) {
 				margin-left: 1em;
 			}
-			
+
 			.about-wrap .feature-section img {
 			    background: none repeat scroll 0% 0% #FFF;
 			    border: 1px solid #CCC;
@@ -422,7 +422,7 @@ class BPActivityPrivacy_Admin {
 						<li><?php _e( 'Admin Only', 'bp-activity-privacy' ); ?></li>
 						<li><?php _e( 'Only Me', 'bp-activity-privacy' ); ?></li>
 					</ul>
-					<p><?php _e( 'Certain privacy controls are component-dependent. For example, the “Friends Only” privacy option in the dropdown will not show up unless you have the Friends component activated in the BuddyPress settings panel.', 'bp-activity-privacy' ); ?></p>
+					<p><?php _e( 'Certain privacy controls are component-dependent. For example, the "Friends Only" privacy option in the dropdown will not show up unless you have the Friends component activated in the BuddyPress settings panel.', 'bp-activity-privacy' ); ?></p>
 
 				</div>
 			</div>

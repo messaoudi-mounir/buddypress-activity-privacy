@@ -5,7 +5,7 @@ Plugin URI:
 Description: BP Activity Privacy add the ability for members to choose who can read his activity before it posted !
 Version: 1.2
 Requires at least:  WP 3.4, BuddyPress 1.5
-Tested up to: BuddyPress 1.5, 1.9 beta2
+Tested up to: BuddyPress 1.5, 1.9
 License: GNU General Public License 2.0 (GPL) http://www.gnu.org/licenses/gpl.html
 Author: Meg@Info
 Author URI: http://profiles.wordpress.org/megainfo 
@@ -56,7 +56,7 @@ function bp_activity_privacy_activate() {
 
 	// Add the transient to redirect
 	set_transient( '_bp_activity_privacy_activation_redirect', true, 30 );
-	
+
 	do_action( 'bp_activity_privacy_activation' );
 }
 

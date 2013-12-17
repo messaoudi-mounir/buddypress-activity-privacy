@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: buddypress-activity-privacy\n"
-"POT-Creation-Date: 2013-12-16 19:33-0000\n"
-"PO-Revision-Date: 2013-12-16 19:33-0000\n"
+"POT-Creation-Date: 2013-12-17 16:28-0000\n"
+"PO-Revision-Date: 2013-12-17 16:28-0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -174,7 +174,7 @@ msgstr ""
 #: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:400
 #, php-format
 msgid "What&#39; new in %s ?"
-msgstr ""
+msgstr "Quoi de neuf dans la version %s ?"
 
 #: C:\work\php\wamp\www\wordpressdev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:405
 msgid ""

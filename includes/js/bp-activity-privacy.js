@@ -19,6 +19,7 @@ jq(document).ready( function() {
 		                var selectBoxWidth = parseInt(jq(this).width()) - parseInt(selectBoxSpan.css('padding-left')) -parseInt(selectBoxSpan.css('padding-right'));            
 		                var selectBoxSpanInner = selectBoxSpan.find(':first-child').next();
 		                selectBoxSpan.css({display:'inline-block'});
+		               //alert(selectBoxSpan.width());
 		                jq(this).css('width',selectBoxSpan.width());
 		                if(options=="") selectBoxSpanInner.css({width:selectBoxWidth, display:'inline-block'});
 		                var selectBoxHeight = parseInt(selectBoxSpan.height()) + parseInt(selectBoxSpan.css('padding-top')) + parseInt(selectBoxSpan.css('padding-bottom'));
@@ -191,7 +192,7 @@ jq(document).ready( function() {
 
 			//reset the privacy selection
 			jq("select#activity-privacy option[selected]").prop('selected', true).trigger('change');
-			
+
 			jq('select.bp-ap-selectbox').customStyle('2');
 		});
 

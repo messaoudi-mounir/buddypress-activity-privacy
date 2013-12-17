@@ -112,8 +112,20 @@ add_action('bp_after_activity_loop', 'bp_add_custom_style_selectbox');
 function bp_add_custom_style_selectbox(){
     ?>
     <script type="text/javascript">
+    if ( typeof jq == "undefined" )
+        var jq = jQuery;  
+    jq(document).ready( function() {
+        if (  jq.isFunction(jq.fn.customStyle)  ) { 
+            //fix width problem
+            //http://stackoverflow.com/questions/6132141/jquery-why-does-width-sometimes-return-0-after-inserting-elements-with-html
+            setTimeout(function(){
+                jq('select.bp-ap-selectbox').customStyle('2');
+            },0);
+            
+        }
 
-        jq('select.bp-ap-selectbox').customStyle('2');
+    });
     </script>
+
     <?php
 }

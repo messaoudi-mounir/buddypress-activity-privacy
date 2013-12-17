@@ -64,7 +64,7 @@ Version 1.1.2 ( Aug 1, 2013 )
 
 - Fix js bug due the use of bp_get_cookies() function (added since bp 1.8).
 
-Version 1.2 (Dec 15, 2013)
+Version 1.2 (Dec 17, 2013)
 --------------------------------------------------------------
 
 - New Dropdown system with a nice icons ( By Font Awesome http://fontawesome.io/ ).
