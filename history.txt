@@ -70,3 +70,9 @@ Version 1.2 (Dec 17, 2013)
 - New Dropdown system with a nice icons ( By Font Awesome http://fontawesome.io/ ).
 - Admin Option Area, Admin can update Enable/Disable privacy level, Sort the privacy levels and change the default privacy level.
 - Fix the visibility of the last activity in members directory and member profile page.
+
+
+Version 1.2.1 (Jan 11, 2014)
+--------------------------------------------------------------
+
+- New privacy level (@mentioned only). Members mentioned in the acitivity can see the content of acitivity whatever the privacy level. 

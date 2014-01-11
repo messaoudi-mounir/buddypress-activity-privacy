@@ -115,6 +115,16 @@ class BPActivityPrivacy_Admin {
 	              );
 	          }
 
+	          if ( bp_activity_do_mentions() ) {
+	              $profile_activity_visibility_levels['mentionedonly'] = array(
+	                  'id'        => 'mentionedonly',
+	                  'label'     => __( '@Mentioned Only', 'bp-activity-privacy' ),
+	                  'default'   => ( $pavl_default == 'mentionedonly')  ? true : false,
+	                  'position'  => 10*( 1 + array_search('mentionedonly', array_keys($pavl))),
+	                  'disabled'  => ( $pavl_enabled ['mentionedonly'] )  ? false : true
+	              );
+	          }
+
 	          $profile_activity_visibility_levels['adminsonly'] = array(
 	              'id'      => 'adminsonly',
 	              'label'   => __( 'Admins Only', 'bp-activity-privacy' ),
@@ -173,6 +183,16 @@ class BPActivityPrivacy_Admin {
 	                    'disabled'  => ( $gavl_enabled ['groupfriends'] )  ? false : true          
 	                );
 	            }
+	          }
+
+	         if ( bp_activity_do_mentions() ) {
+	                $groups_activity_visibility_levels['mentionedonly'] = array(
+	                   'id'        => 'mentionedonly',
+	                   'label'     => __( '@Mentioned Only', 'bp-activity-privacy' ),
+	                   'default'   => ( $gavl_default == 'mentionedonly')  ? true : false,
+	                   'position'  => 10*( 1 + array_search('mentionedonly', array_keys($gavl))),
+	                   'disabled'  => ( $gavl_enabled ['mentionedonly'] )  ? false : true            
+	                );
 	          }
 
 	          if ( bp_is_active( 'groups' ) ) {
@@ -381,6 +401,8 @@ class BPActivityPrivacy_Admin {
 			<div class="about-text"><?php printf( __( 'Thank you for upgrading to the latest version of BP Activity Privacy! <br \> BP Activity Privacy %s is ready to manage the activity privacy of your Site!', 'bp-activity-privacy' ), $display_version ); ?></div>
 			<div class="bpap-admin-badge" style=""><?php printf( __( 'Version %s', 'bp-activity-privacy' ), $display_version ); ?></div>
 
+			<div class="warning-text" style="color:red;font-weight:bold;text-align:center;"><?php _e( 'Please go to BP Acitivity Privacy Configuration and save your settings to apply new update.', 'bp-activity-privacy'  ); ?></div>
+
 			<h2 class="nav-tab-wrapper">
 				<a class="nav-tab nav-tab-active" href="<?php echo esc_url(  bp_get_admin_url( add_query_arg( array( 'page' => 'bp-activity-privacy-about' ), 'index.php' ) ) ); ?>">
 					<?php _e( 'About', 'bp-activity-privacy' ); ?>
@@ -401,7 +423,12 @@ class BPActivityPrivacy_Admin {
 
 				<div class="feature-section">
 					<ul>
-
+						<li><?php _e( 'A New privacy level (@mentioned only). When a member choose this privacy level, only mentioned members (and admin of course) can see the activity.', 'bp-activity-privacy' ); ?></li>
+						<li><?php _e( '<strong>Remark:</strong> <i>Members mentioned in activity can see it\'s content whatever the privacy level.</i>', 'bp-activity-privacy' ); ?></li>
+						<br />
+						<strong><?php _e( 'Updates before current version','bp-activity-privacy' ); ?></strong>
+						<br />
+						<br />	
 						<li><?php _e( 'New Dropdown system with a nice icons ( By <a target="_BLANK" href="http://fontawesome.io/">Font Awesome</a> ).', 'bp-activity-privacy' ); ?></li>
 						<li><?php _e( 'Administrator now have a finer control to enable/disable the privacy levels, sort the privacy levels and change the default privacy level.', 'bp-activity-privacy' );?></li>
 						<li><?php printf( __( 'Finally version %s fixes a bug with "Last acitivity" visibility in the members directory and member profile page.', 'bp-activity-privacy' ), $display_version );?></li>
@@ -419,6 +446,7 @@ class BPActivityPrivacy_Admin {
 						<li><?php _e( 'Anyone', 'bp-activity-privacy' ); ?></li>
 						<li><?php _e( 'Logged In Users', 'bp-activity-privacy' ); ?></li>
 						<li><?php _e( 'My Friends', 'bp-activity-privacy' ); ?></li>
+						<li><?php _e( '@Mentioned Only', 'bp-activity-privacy' ); ?></li>
 						<li><?php _e( 'Admin Only', 'bp-activity-privacy' ); ?></li>
 						<li><?php _e( 'Only Me', 'bp-activity-privacy' ); ?></li>
 					</ul>

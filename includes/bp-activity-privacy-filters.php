@@ -27,8 +27,9 @@ function bp_visibility_activity_filter( $has_activities, $activities ) {
             continue;
         $visibility = bp_activity_get_meta( $activity->id, 'activity-privacy' );
         $remove_from_stream = false;
+      
 
-        switch ($visibility) {
+        switch ( $visibility ) {
             //Logged in users
             case 'loggedin' :
                 if( !$bp_loggedin_user_id )
@@ -41,6 +42,15 @@ function bp_visibility_activity_filter( $has_activities, $activities ) {
                 if( !$is_friend )
                     $remove_from_stream = true;
                 break;    
+
+            //@Mentioned Only  
+            case 'mentionedonly' :
+                $usernames = bp_activity_find_mentions( $activity->content );
+                $is_mentioned = array_key_exists( $bp_loggedin_user_id,  (array)$usernames );
+
+                if( !$is_mentioned )
+                    $remove_from_stream = true;
+                break;   
 
             //My friends in the group    
             case 'groupfriends' :
@@ -80,7 +90,7 @@ function bp_visibility_activity_filter( $has_activities, $activities ) {
 
             //Only Me    
             case 'onlyme' :
-                if( $bp_loggedin_user_id != $activity->user_id  )
+                if( $bp_loggedin_user_id != $activity->user_id )
                     $remove_from_stream = true;
                 break;             
 
@@ -89,6 +99,15 @@ function bp_visibility_activity_filter( $has_activities, $activities ) {
                 break;
         }
 
+        // mentioned members can always see the acitivity whatever the privacy level
+        if ( $visibility != 'mentionedonly' ){
+            $usernames = bp_activity_find_mentions( $activity->content );
+            $is_mentioned = array_key_exists( $bp_loggedin_user_id,  (array)$usernames );
+
+            if( $is_mentioned )
+                $remove_from_stream = false;
+        }
+     
         $remove_from_stream = apply_filters( 'bp_more_visibility_activity_filter', $remove_from_stream, $visibility, $activity);
 
         if ( $remove_from_stream ) {

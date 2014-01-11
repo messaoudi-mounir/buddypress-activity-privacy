@@ -53,6 +53,12 @@ class BP_Activity_Privacy {
 			$this->groups_activity_privacy_levels [] = 'groupmoderators';
 			$this->groups_activity_privacy_levels [] = 'groupadmins';
 		}
+
+		//mentioned
+		if ( bp_activity_do_mentions() ) {
+			$this->profile_activity_privacy_levels [] = 'mentionedonly';
+			$this->groups_activity_privacy_levels [] = 'mentionedonly';			
+		}
 		
 		// Register the visibility levels
 		$this->profile_activity_visibility_levels  = array(
@@ -82,11 +88,23 @@ class BP_Activity_Privacy {
 	        );
 	    }
 
+
+		//mentioned
+		if ( bp_activity_do_mentions() ) {
+	        $this->profile_activity_visibility_levels['mentionedonly'] = array(
+	            'id'        => 'mentionedonly',
+	            'label'     => __( '@mentioned only', 'bp-activity-privacy' ),
+	            'default'   => false,
+	            'position'  => 40,
+	            'disabled'  => false	            
+	        );			
+		}
+			
 	    $this->profile_activity_visibility_levels['adminsonly'] = array(
 	        'id'      => 'adminsonly',
 	        'label'   => __( 'Admins Only', 'bp-activity-privacy' ),
 	        'default' => false,
-	        'position'  => 40,
+	        'position'  => 50,
 	        'disabled'  => false	        
 	    );
 
@@ -94,7 +112,7 @@ class BP_Activity_Privacy {
 	        'id'        => 'onlyme',
 	        'label'     => __( 'Only me', 'bp-activity-privacy' ),
 	        'default'   => false,
-	        'position'  => 50,
+	        'position'  => 60,
 	        'disabled'  => false	        
 	    );
 
@@ -134,12 +152,23 @@ class BP_Activity_Privacy {
 	   		}
 	    }
 
+	    //mentioned
+		if ( bp_activity_do_mentions() ) {
+	        $this->groups_activity_visibility_levels['mentionedonly'] = array(
+	            'id'        => 'mentionedonly',
+	            'label'     => __( '@mentioned only', 'bp-activity-privacy' ),
+	            'default'   => false,
+	            'position'  => 50,
+	            'disabled'  => false	            
+	        );			
+		}
+
 	    if ( bp_is_active( 'groups' ) ) {
 	        $this->groups_activity_visibility_levels['grouponly'] = array(
 	            'id'        => 'grouponly',
 	            'label'     => __( 'Group Members', 'bp-activity-privacy' ),
 	            'default'   => false,
-	            'position'  => 50,
+	            'position'  => 60,
 	            'disabled'  => false	            
 	        );
 
@@ -147,7 +176,7 @@ class BP_Activity_Privacy {
 	            'id'        => 'groupmoderators',
 	            'label'     => __( 'Group Moderators', 'bp-activity-privacy' ),
 	            'default'   => false,
-	            'position'  => 60,
+	            'position'  => 70,
 	            'disabled'  => false            
 	        );
 
@@ -155,7 +184,7 @@ class BP_Activity_Privacy {
 	            'id'        => 'groupadmins',
 	            'label'     => __( 'Group Admins', 'bp-activity-privacy' ),
 	            'default'   => false,
-	            'position'  => 70,
+	            'position'  => 80,
 	            'disabled'  => false	            
 	        );
 		}	  
@@ -164,7 +193,7 @@ class BP_Activity_Privacy {
 	        'id'        => 'adminsonly',
 	        'label'     => __( 'Admins Only', 'bp-activity-privacy' ),
 	        'default'   => false,
-	        'position'  => 80,
+	        'position'  => 90,
 		    'disabled'  => false,        
 	    );
 
@@ -172,7 +201,7 @@ class BP_Activity_Privacy {
 	        'id'        => 'onlyme',
 	        'label'     => __( 'Only me', 'bp-activity-privacy' ),
 	        'default'   => false,
-	        'position'  => 90,
+	        'position'  => 100,
 		    'disabled'  => false,        
 	    );      
 
