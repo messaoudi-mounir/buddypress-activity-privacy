@@ -100,12 +100,12 @@ function bp_visibility_activity_filter( $has_activities, $activities ) {
         }
 
         // mentioned members can always see the acitivity whatever the privacy level
-        if ( $visibility != 'mentionedonly' ){
+        if ( $visibility != 'mentionedonly' && $bp_loggedin_user_id && $remove_from_stream ){
             $usernames = bp_activity_find_mentions( $activity->content );
             $is_mentioned = array_key_exists( $bp_loggedin_user_id,  (array)$usernames );
-
-            if( $is_mentioned )
+            if( $is_mentioned ) {
                 $remove_from_stream = false;
+            }
         }
      
         $remove_from_stream = apply_filters( 'bp_more_visibility_activity_filter', $remove_from_stream, $visibility, $activity);

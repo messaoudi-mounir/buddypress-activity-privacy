@@ -76,3 +76,8 @@ Version 1.2.1 (Jan 11, 2014)
 --------------------------------------------------------------
 
 - New privacy level (@mentioned only). Members mentioned in the acitivity can see the content of acitivity whatever the privacy level. 
+
+Version 1.2.2 (Jan 18, 2014)
+--------------------------------------------------------------
+
+- Fix bug, visibility not work. 
