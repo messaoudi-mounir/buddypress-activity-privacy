@@ -110,7 +110,7 @@ function bp_visibility_activity_filter( $has_activities, $activities ) {
      
         $remove_from_stream = apply_filters( 'bp_more_visibility_activity_filter', $remove_from_stream, $visibility, $activity);
 
-        if ( $remove_from_stream ) {
+        if ( $remove_from_stream && isset( $activities->activity_count ) ) {
             $activities->activity_count = $activities->activity_count - 1;
             unset( $activities->activities[$key] );
         }

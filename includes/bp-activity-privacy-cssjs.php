@@ -20,7 +20,7 @@ function bp_activity_privacy_add_js() {
 
 	//wp_enqueue_script( 'jquery-jui-dropdown-js', plugins_url( 'js/jdropdown.js' ,  __FILE__ ), array('jquery'), false, true );
 
-	//load the script at the footer :P
+	//load the script at the footer
 	//wp_enqueue_script( 'bp-activity-privacy-js', plugins_url( 'js/bp-activity-privacy.js' ,  __FILE__ ), array('jquery','jquery-jui-dropdown-js'), false, true );
 	wp_enqueue_script( 'bp-activity-privacy-js', plugins_url( 'js/bp-activity-privacy.js' ,  __FILE__ ), array('jquery'), false, true );
 
@@ -34,19 +34,17 @@ function bp_activity_privacy_add_js() {
 }
 add_action( 'wp_enqueue_scripts', 'bp_activity_privacy_add_js', 1 );
 
-
-
 /**
  * bp_activity_privacy_add_css
  * @return [type] [description]
  */
 function bp_activity_privacy_add_css() {
-	global $bp;
+	// global $wp_styles;
+
+	// $srcs = array_map('basename', (array) wp_list_pluck($wp_styles->registered, 'src') );
+	// if ( !in_array('font-awesome.css', $srcs) && !in_array('font-awesome.min.css', $srcs)  ) {
     wp_enqueue_style( 'bp-font-awesome-css', plugins_url( 'css/font-awesome/css/font-awesome.min.css' ,  __FILE__ )); 
+	// }
     wp_enqueue_style( 'bp-activity-privacy-css', plugins_url( 'css/bp-activity-privacy.css' ,  __FILE__ )); 
 }
 add_action( 'bp_actions', 'bp_activity_privacy_add_css', 1 );
-
-
-
-

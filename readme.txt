@@ -3,7 +3,7 @@ Contributors: megainfo
 Tags: buddypress,activity,privacy,visibility,stream,private,public,only me,admins only,friends, followers,vie privée,confidentialité
 Requires at least: WordPress 3.4, BuddyPress 1.5
 Tested up to: WordPress 3.8 / BuddyPress 1.9.1
-Stable tag: 1.2.2
+Stable tag: 1.3
 
 
 == Description ==
@@ -13,16 +13,12 @@ BuddyPress Activity Privacy plugin add a privacy level to activity stream compon
 The plugin add the ability for members to choose who can read his activity before it posted (Anyone, Logged In Users, My Friends, Admins Only, Only me, My Friends in Group , Group Members ...etc). 
 
 
-What's news In Buddypress Activity Privacy 1.2.2 ?
+What's news In Buddypress Activity Privacy 1.2.x ?
 
 - A New privacy level (@mentioned only). When a member choose this privacy level, only mentioned members (and admin of course) can see the activity.
 
 Remark: Members mentioned in activity can see it's content whatever the privacy level. 
 
-
-
-
-What's news In Buddypress Activity Privacy 1.2 ?
 
 - New Drop down system with a nice icons (font awsome).
 
@@ -31,20 +27,14 @@ What's news In Buddypress Activity Privacy 1.2 ?
 
 
 
-What's news In Buddypress Activity Privacy 1.1 ?
+What's news In Buddypress Activity Privacy 1.x ?
 
 - Members can now change the privacy of the activity already posted.
 - Admins can update the privacy of all activities. 
 
-
-What's news In Buddypress Activity Privacy 1.0.3 ?
-
-
 - Integration with BuddyPress Follow Plugin (http://wordpress.org/extend/plugins/buddypress-followers/ ).
 
-
 - Integration With Buddypress Activity Plus Plugin (http://wordpress.org/extend/plugins/buddypress-activity-plus/ ).
-
 
 -The plugin is now extensible for new privacy levels !! ( Check the integration of BuddyPress Follow in bp-activity-privacy-integrations.php ).
 
@@ -79,6 +69,13 @@ Or In GitHub
 https://github.com/dzmounir/buddypress-activity-privacy
 
 == Changelog ==
+
+= 1.3 =
+- Fix localization loading.
+- Fix integration with Followers plugin
+
+= 1.2.2 =
+- Fix bug, visibility not work. 
 
 = 1.2.1 =
 - New privacy level (@mentioned only). 

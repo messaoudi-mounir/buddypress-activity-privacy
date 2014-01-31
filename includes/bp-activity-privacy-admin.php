@@ -139,7 +139,18 @@ class BPActivityPrivacy_Admin {
 	              'default'   => ( $pavl_default == 'onlyme')  ? true : false,
 	              'position'  => 10*( 1 + array_search('onlyme', array_keys($pavl))),
 	              'disabled'  => ( $pavl_enabled ['onlyme'] )  ? false : true
-	          );
+	          );	
+
+	          //followers plugin integration
+			  if( function_exists('bp_follow_is_following') ) {
+		          $profile_activity_visibility_levels['followers'] = array(
+		              'id'        => 'followers',
+		              'label'     => __( 'My Followers', 'bp-activity-privacy' ),
+		              'default'   => ( $pavl_default == 'followers')  ? true : false,
+		              'position'  => 10*( 1 + array_search('followers', array_keys($pavl))),
+		              'disabled'  => ( $pavl_enabled ['followers'] )  ? false : true
+		          );
+			  }
 
 	          bp_update_option( 'bp_ap_profile_activity_visibility_levels', $profile_activity_visibility_levels );
 	      
@@ -236,6 +247,24 @@ class BPActivityPrivacy_Admin {
 	              'position'  => 10*( 1 + array_search('onlyme', array_keys($gavl))),
 	              'disabled'  => ( $gavl_enabled ['onlyme'] )  ? false : true    
 	        );   
+
+            //followers plugin integration
+		    if( function_exists('bp_follow_is_following') ) {
+		        $groups_activity_visibility_levels['followers'] = array(
+		              'id'        => 'followers',
+		              'label'     => __( 'My Followers', 'bp-activity-privacy' ),
+		              'default'   => ( $gavl_default == 'followers')  ? true : false,
+		              'position'  => 10*( 1 + array_search('followers', array_keys($gavl))),
+		              'disabled'  => ( $gavl_enabled ['followers'] )  ? false : true    
+		        );   	    	
+		        $groups_activity_visibility_levels['groupfollowers'] = array(
+		              'id'        => 'groupfollowers',
+		              'label'     => __( 'My Followers in Group', 'bp-activity-privacy' ),
+		              'default'   => ( $gavl_default == 'groupfollowers')  ? true : false,
+		              'position'  => 10*( 1 + array_search('groupfollowers', array_keys($gavl))),
+		              'disabled'  => ( $gavl_enabled ['groupfollowers'] )  ? false : true    
+		        );   
+		    }
 
 	        bp_update_option( 'bp_ap_groups_activity_visibility_levels', $groups_activity_visibility_levels );
 	        ?>
@@ -559,8 +588,3 @@ class BPActivityPrivacy_Admin {
 
   	}
 }  
-
-
-
-
-
