@@ -174,8 +174,6 @@ function bp_activity_privacy_latest_update( $latest_update ){
     return $latest_update;
 }
 
-
-
 add_filter('bp_get_member_latest_update', 'bp_activity_privacy_member_latest_update',10, 1);
 function bp_activity_privacy_member_latest_update( $update_content ){
     global $members_template;

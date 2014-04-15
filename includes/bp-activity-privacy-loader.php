@@ -44,11 +44,17 @@ class BP_Activity_Privacy {
 		}
 
 		//mentioned
-		if ( bp_activity_do_mentions() ) {
+		// https://buddypress.trac.wordpress.org/changeset/7193
+		if ( function_exists('bp_activity_do_mentions') ) {
+			if ( bp_activity_do_mentions() ) {
+				$this->profile_activity_privacy_levels [] = 'mentionedonly';
+				$this->groups_activity_privacy_levels [] = 'mentionedonly';			
+			}	
+		} else {
 			$this->profile_activity_privacy_levels [] = 'mentionedonly';
-			$this->groups_activity_privacy_levels [] = 'mentionedonly';			
+			$this->groups_activity_privacy_levels [] = 'mentionedonly';		
 		}
-		
+
 		// Register the visibility levels
 		$this->profile_activity_visibility_levels  = array(
 	        'public' => array(
@@ -78,14 +84,25 @@ class BP_Activity_Privacy {
 	    }
 
 		//mentioned
-		if ( bp_activity_do_mentions() ) {
+		// https://buddypress.trac.wordpress.org/changeset/7193
+		if ( function_exists('bp_activity_do_mentions') ) {	
+			if ( bp_activity_do_mentions() ) {
+		        $this->profile_activity_visibility_levels['mentionedonly'] = array(
+		            'id'        => 'mentionedonly',
+		            'label'     => __( '@mentioned only', 'bp-activity-privacy' ),
+		            'default'   => false,
+		            'position'  => 40,
+		            'disabled'  => false	            
+		        );			
+			}
+		}else {
 	        $this->profile_activity_visibility_levels['mentionedonly'] = array(
 	            'id'        => 'mentionedonly',
 	            'label'     => __( '@mentioned only', 'bp-activity-privacy' ),
 	            'default'   => false,
 	            'position'  => 40,
 	            'disabled'  => false	            
-	        );			
+	        );				
 		}
 			
 	    $this->profile_activity_visibility_levels['adminsonly'] = array(
@@ -140,15 +157,26 @@ class BP_Activity_Privacy {
 	   		}
 	    }
 
-	    //mentioned
-		if ( bp_activity_do_mentions() ) {
+		//mentioned
+		// https://buddypress.trac.wordpress.org/changeset/7193
+		if ( function_exists('bp_activity_do_mentions') ) {	
+			if ( bp_activity_do_mentions() ) {
+		        $this->groups_activity_visibility_levels['mentionedonly'] = array(
+		            'id'        => 'mentionedonly',
+		            'label'     => __( '@mentioned only', 'bp-activity-privacy' ),
+		            'default'   => false,
+		            'position'  => 50,
+		            'disabled'  => false	            
+		        );			
+			}
+		} else {
 	        $this->groups_activity_visibility_levels['mentionedonly'] = array(
 	            'id'        => 'mentionedonly',
 	            'label'     => __( '@mentioned only', 'bp-activity-privacy' ),
 	            'default'   => false,
 	            'position'  => 50,
 	            'disabled'  => false	            
-	        );			
+	        );				
 		}
 
 	    if ( bp_is_active( 'groups' ) ) {

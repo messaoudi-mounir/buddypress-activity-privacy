@@ -115,15 +115,27 @@ class BPActivityPrivacy_Admin {
 	              );
 	          }
 
-	          if ( bp_activity_do_mentions() ) {
+			  // https://buddypress.trac.wordpress.org/changeset/7193
+			  if ( function_exists('bp_activity_do_mentions') ) {
+		          if ( bp_activity_do_mentions() ) {
+		              $profile_activity_visibility_levels['mentionedonly'] = array(
+		                  'id'        => 'mentionedonly',
+		                  'label'     => __( '@Mentioned Only', 'bp-activity-privacy' ),
+		                  'default'   => ( $pavl_default == 'mentionedonly')  ? true : false,
+		                  'position'  => 10*( 1 + array_search('mentionedonly', array_keys($pavl))),
+		                  'disabled'  => ( $pavl_enabled ['mentionedonly'] )  ? false : true
+		              );
+		          }
+
+	      	  } else {
 	              $profile_activity_visibility_levels['mentionedonly'] = array(
 	                  'id'        => 'mentionedonly',
 	                  'label'     => __( '@Mentioned Only', 'bp-activity-privacy' ),
 	                  'default'   => ( $pavl_default == 'mentionedonly')  ? true : false,
 	                  'position'  => 10*( 1 + array_search('mentionedonly', array_keys($pavl))),
 	                  'disabled'  => ( $pavl_enabled ['mentionedonly'] )  ? false : true
-	              );
-	          }
+	              );      	  	
+	      	  }
 
 	          $profile_activity_visibility_levels['adminsonly'] = array(
 	              'id'      => 'adminsonly',

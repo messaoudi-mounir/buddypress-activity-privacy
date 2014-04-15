@@ -80,9 +80,9 @@ function bp_update_activitiy_visibility_selectbox() {
 
         global $bp_activity_privacy;
         $group_id = bp_get_activity_item_id();
-
-        // if is not a activity group 
-        if( !isset( $group_id ) || $group_id == 0 )
+        
+        //if is not a group activity or a new blog post
+        if( !isset( $group_id ) || $group_id == 0 ||  'new_blog_post' == bp_get_activity_type() )
             $visibility_levels = bp_get_profile_activity_visibility_levels();   
         else
             $visibility_levels = bp_get_groups_activity_visibility_levels();
@@ -107,8 +107,6 @@ function bp_update_activitiy_visibility_selectbox() {
 //add_action('bp_activity_time_since', 'bp_update_activitiy_visibility_selectbox',10 ,1);
 add_action('bp_activity_entry_meta', 'bp_update_activitiy_visibility_selectbox',10);
 
-
-add_action('bp_after_activity_loop', 'bp_add_custom_style_selectbox');
 function bp_add_custom_style_selectbox(){
     ?>
     <script type="text/javascript">
@@ -129,3 +127,4 @@ function bp_add_custom_style_selectbox(){
 
     <?php
 }
+add_action('bp_after_activity_loop', 'bp_add_custom_style_selectbox');
