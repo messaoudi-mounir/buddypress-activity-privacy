@@ -9,12 +9,8 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
- * Register AJAX handlers for a list of actions of example plugin.
+ * Register AJAX handlers for a list of actions.
  *
- * This function is registered to the after_setup_theme hook with priority 20 as
- * this file is included in a function hooked to after_setup_theme at priority 10.
- *
- * @since BuddyPress (1.6)
  */
 function bp_activity_privacy_register_actions() {
 	$actions = array(
@@ -36,10 +32,8 @@ function bp_activity_privacy_register_actions() {
 add_action( 'bp_activity_privacy_load_core', 'bp_activity_privacy_register_actions', 1 );
 
 /**
- * Load the template loop for the current object.
+ * update the privacy 
  *
- * @return string Prints template loop for the specified object
- * @since BuddyPress (1.2)
  */
 function update_activity_privacy() {
 	// Bail if not a POST action

@@ -464,15 +464,15 @@ class BPActivityPrivacy_Admin {
 
 				<div class="feature-section">
 					<ul>
-						<li><?php _e( 'A New privacy level (@mentioned only). When a member choose this privacy level, only mentioned members (and admin of course) can see the activity.', 'bp-activity-privacy' ); ?></li>
-						<li><?php _e( '<strong>Remark:</strong> <i>Members mentioned in activity can see it\'s content whatever the privacy level.</i>', 'bp-activity-privacy' ); ?></li>
-						<br />
+						<li class=""><?php _e( 'The plugin work now on Multisite Network!', 'bp-activity-privacy' ); ?></li>
 						<strong><?php _e( 'Updates before current version','bp-activity-privacy' ); ?></strong>
 						<br />
 						<br />	
+						<li><?php _e( 'A New privacy level (@mentioned only). When a member choose this privacy level, only mentioned members (and admin of course) can see the activity.', 'bp-activity-privacy' ); ?></li>
+						<li><?php _e( '<strong>Remark:</strong> <i>Members mentioned in activity can see it\'s content whatever the privacy level.</i>', 'bp-activity-privacy' ); ?></li>
 						<li><?php _e( 'New Dropdown system with a nice icons ( By <a target="_BLANK" href="http://fontawesome.io/">Font Awesome</a> ).', 'bp-activity-privacy' ); ?></li>
 						<li><?php _e( 'Administrator now have a finer control to enable/disable the privacy levels, sort the privacy levels and change the default privacy level.', 'bp-activity-privacy' );?></li>
-						<li><?php printf( __( 'Finally version %s fixes a bug with "Last acitivity" visibility in the members directory and member profile page.', 'bp-activity-privacy' ), $display_version );?></li>
+						<li><?php printf( __( 'Finally version %s fixes a bug with "Last acitivity" visibility in the members directory and member profile page.', 'bp-activity-privacy' ), '1.3' );?></li>
 					</ul>
 				</div>
 			</div>
