@@ -32,7 +32,7 @@ function bp_add_visibility_to_activity( $content, $user_id, $activity_id ) {
 
     if( isset( $_POST['visibility'] ) && in_array( esc_attr( $_POST['visibility'] ), $levels ) )
         $visibility = esc_attr($_POST['visibility']);
-    
+
     bp_activity_update_meta( $activity_id, 'activity-privacy', $visibility );
 }
 add_action( 'bp_activity_posted_update', 'bp_add_visibility_to_activity', 10, 3 );
@@ -49,10 +49,9 @@ function bp_add_visibility_to_group_activity( $content, $user_id, $group_id, $ac
     $visibility = 'public';
 
     $levels = bp_get_groups_activity_privacy_levels();
-
     if( isset( $_POST['visibility'] ) && in_array( esc_attr( $_POST['visibility'] ), $levels ) )
         $visibility = esc_attr($_POST['visibility']);
-    
+
     bp_activity_update_meta( $activity_id, 'activity-privacy', $visibility );
 }
 add_action( 'bp_groups_posted_update', 'bp_add_visibility_to_group_activity', 10, 4 );

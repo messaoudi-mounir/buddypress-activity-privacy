@@ -64,8 +64,10 @@ function bp_activity_privacy_load_textdomain() {
 }
 add_action( 'plugins_loaded', 'bp_activity_privacy_load_textdomain' );
 
-
-function bp_activity_check_config() {
+/**
+ * Check the config for multisite
+ */
+function bp_activity_privacy_check_config() {
 	global $bp;
 
 	$config = array(
@@ -133,18 +135,15 @@ function bp_activity_check_config() {
 function bp_activity_privacy_init() {
 	// Because our loader file uses BP_Component, it requires BP 1.5 or greater.
 	//if ( version_compare( BP_VERSION, '1.3', '>' ) )
-	if ( bp_activity_check_config() )
+	if ( bp_activity_privacy_check_config() )
 		require( dirname( __FILE__ ) . '/includes/bp-activity-privacy-loader.php' );
 }
 add_action( 'bp_include', 'bp_activity_privacy_init' );
 
 /* Put setup procedures to be run when the plugin is activated in the following function */
 function bp_activity_privacy_activate() {
-	global $bp;
-
-	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-	if ( !is_plugin_active( 'buddypress/bp-loader.php' ) ) {
-		//deactivate_plugins( basename( __FILE__ ) ); // Deactivate this plugin
+	// check if buddypress is active
+	if ( ! defined( 'BP_VERSION' ) ) {
 		die( _e( 'You cannot enable BuddyPress Activity Privacy because <strong>BuddyPress</strong> is not active. Please install and activate BuddyPress before trying to activate Buddypress Activity Privacy again.' , 'bp-activity-privacy' ) );
 	}
 

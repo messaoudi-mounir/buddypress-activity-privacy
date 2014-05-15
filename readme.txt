@@ -10,10 +10,11 @@ Stable tag: 1.3.1
 
 BuddyPress Activity Privacy plugin add a privacy level to activity stream component.
 
-The plugin add the ability for members to choose who can read his activity before it posted (Anyone, Logged In Users, My Friends, Admins Only, Only me, My Friends in Group , Group Members ...etc). 
+The plugin add the ability for members to choose who can read his activity (Anyone, Logged In Users, My Friends, Admins Only, Only me, My Friends in Group , Group Members ...etc). 
 
 
 What's news In Buddypress Activity Privacy 1.3.x ?
+- Integration with Buddypress Media plugin.
 - The plugin work now on multi site Netowork.
 - A New privacy level (@mentioned only). When a member choose this privacy level, only mentioned members (and admin of course) can see the activity.
 
@@ -23,7 +24,6 @@ Remark: Members mentioned in activity can see it's content whatever the privacy 
 - New Drop down system with a nice icons (font awsome).
 
 - Admin Option Area, Admin can update Enable/Disable privacy level, Sort the privacy levels and change the default privacy level. 
-
 
 
 What's news In Buddypress Activity Privacy 1.x ?
@@ -68,6 +68,12 @@ Or In GitHub
 https://github.com/dzmounir/buddypress-activity-privacy
 
 == Changelog ==
+
+= 1.3.2 =
+- Fix issues when Buddypress Follow is activate 
+- Fix visibility of "Last update" activity on member header and members loop.
+- Beta Integration with buddypress-media plugin (rtMedia for WordPress, BuddyPress and bbPress).
+- add .POT file for translation.
 
 = 1.3.1 =
 - Work on Multisite Network.

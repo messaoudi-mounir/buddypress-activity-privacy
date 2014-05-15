@@ -1,0 +1,367 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: buddypress-activity-privacy\n"
+"POT-Creation-Date: 2014-05-09 20:49-0000\n"
+"PO-Revision-Date: 2014-05-09 21:33-0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-KeywordsList: gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: C:\\work\\php\\wamp_2.4\\www\\buddypress\\dev\\wp-"
+"content\\plugins\\buddypress-activity-privacy\n"
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:41
+msgid "Welcome to Buddypress Activity Privacy"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:42
+msgid "Welcome to BP Activity Privacy"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:49
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:302
+msgid "BuddyPress Activity Privacy"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:49
+msgid "BP Activity Privacy"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:94
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:178
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:487
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:62
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:127
+msgid "Anyone"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:101
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:185
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:488
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:69
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:134
+msgid "Logged In Users"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:111
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:195
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:489
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:79
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:144
+msgid "My Friends"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:123
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:133
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:214
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:490
+msgid "@Mentioned Only"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:142
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:249
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:110
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:210
+msgid "Admins Only"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:150
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:257
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:118
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:218
+msgid "Only me"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:160
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:267
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:533
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-integrations.php:74
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-integrations.php:86
+msgid "My Followers"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:203
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:152
+msgid "My Friends in Group"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:224
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:507
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:185
+msgid "Group Members"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:232
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:508
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:193
+msgid "Group Moderators"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:240
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:509
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:201
+msgid "Group Admins"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:274
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-integrations.php:92
+msgid "My Followers in Group"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:283
+msgid "Settings saved."
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:292
+msgid "Settings reseted."
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:307
+msgid "Profil Activity privacy"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:309
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:332
+msgid "Please check the box to enable the privacy and Drag&Drop to sort :"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:330
+msgid "Groups Activity privacy"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:351
+msgid "Save Settings"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:352
+msgid "Reset"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:441
+#, php-format
+msgid "Welcome to BuddyPress Activity Privacy %s"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:442
+#, php-format
+msgid ""
+"Thank you for upgrading to the latest version of BP Activity Privacy! <br "
+"\\> BP Activity Privacy %s is ready to manage the activity privacy of your "
+"Site!"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:443
+#, php-format
+msgid "Version %s"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:445
+msgid ""
+"Please go to BP Acitivity Privacy Configuration and save your settings to "
+"apply new update."
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:449
+msgid "About"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:454
+msgid "Add Privacy Controls To The BuddyPress Activity Stream!"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:457
+msgid ""
+"BP Activity Privacy is a BuddyPress plugin who gives users the ability to "
+"restrict who can see their activity posts. "
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:458
+msgid ""
+"It gives each member multiple privacy options on activity posts and should "
+"encourage more confident participation on your social network."
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:463
+#, php-format
+msgid "What&#39; new in %s ?"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:467
+msgid "The plugin work now on Multisite Network!"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:468
+msgid "Updates before current version"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:471
+msgid ""
+"A New privacy level (@mentioned only). When a member choose this privacy "
+"level, only mentioned members (and admin of course) can see the activity."
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:472
+msgid ""
+"<strong>Remark:</strong> <i>Members mentioned in activity can see it's "
+"content whatever the privacy level.</i>"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:473
+msgid ""
+"New Dropdown system with a nice icons ( By <a target=\"_BLANK\" href="
+"\"http://fontawesome.io/\">Font Awesome</a> )."
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:474
+msgid ""
+"Administrator now have a finer control to enable/disable the privacy levels, "
+"sort the privacy levels and change the default privacy level."
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:475
+#, php-format
+msgid ""
+"Finally version %s fixes a bug with \"Last acitivity\" visibility in the "
+"members directory and member profile page."
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:481
+msgid "How it's Work ?"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:485
+msgid ""
+"Once installed and activated, BuddyPress Activity Privacy adds following "
+"privacy controls to the post update box for members:"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:491
+msgid "Admin Only"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:492
+msgid "Only Me"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:494
+msgid ""
+"Certain privacy controls are component-dependent. For example, the \"Friends "
+"Only\" privacy option in the dropdown will not show up unless you have the "
+"Friends component activated in the BuddyPress settings panel."
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:504
+msgid ""
+"When posting within a group the group-specific privacy options will be added "
+"to the dropdown, inlcluding:"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:506
+msgid "My Friends in a Group"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:516
+msgid "Update the Privacy of the ol "
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:520
+msgid ""
+"Members can update the privacy of the old activity stream (new selectbox in "
+"activity meta)."
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:521
+msgid "Admin can also update the privacy of all the old activity stream."
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:526
+msgid "Privacy control for Followers Plugin"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:530
+msgid "Fully integrated with Buddypress Follow"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:531
+msgid ""
+"If you have <a href=\"http://wordpress.org/plugins/buddypress-followers/"
+"\">BuddyPress Follow</a> installed in your site, BP Activity Privacy adds "
+"new privacy levels :"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:534
+msgid "My followers in Group"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:540
+msgid "Integration for Buddypress Activity Plus Plugin"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:544
+msgid ""
+"BP Activity Privacy is released with Integration for <a href=\"http://"
+"wordpress.org/plugins/buddypress-activity-plus/\">Buddypress Activity Plus</"
+"a>."
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:549
+msgid "BP Acitivity Privacy Configuration"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:553
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:563
+msgid "Configure BP Activity Privacy"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:554
+msgid ""
+"From the settings menu of his WordPress administration, the administrator is "
+"able to configure BP Activity Privacy by :"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:556
+msgid "Enable/Disable a privacy level."
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:557
+msgid "Sort the privacy levels."
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:558
+msgid "Change the default privacy level."
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-admin.php:563
+msgid "Go to the BP Activity Privacy Settings page"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:92
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:101
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:166
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/includes/bp-activity-privacy-loader.php:175
+msgid "@mentioned only"
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/loader.php:108
+msgid ""
+"Buddypress Activity Privacy requires to be activated on the blog where "
+"BuddyPress is activated."
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/loader.php:112
+msgid ""
+"Buddypress Activity Privacy and BuddyPress need to share the same network "
+"configuration."
+msgstr ""
+
+#: C:\work\php\wamp_2.4\www\buddypress\dev\wp-content\plugins\buddypress-activity-privacy/loader.php:147
+msgid ""
+"You cannot enable BuddyPress Activity Privacy because <strong>BuddyPress</"
+"strong> is not active. Please install and activate BuddyPress before trying "
+"to activate Buddypress Activity Privacy again."
+msgstr ""

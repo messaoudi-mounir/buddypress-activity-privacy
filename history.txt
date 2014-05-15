@@ -18,7 +18,7 @@ Version 1.0.2 ( may 5, 2013 )
 Version 1.0.3 ( may 09, 2013 ) 
 --------------------------------------------------------------
 
-- Integration With Buddypress Follow plugin :P.
+- Integration With Buddypress Follow plugin.
 - Integration With Buddypress Activity Plus plugin :XD.
 - Fix the array of privacy levels.
 - Add More Filters to make plugin extensible for new privacy levels ( Check  bp-activity-privacy-integrations.php ).
@@ -93,3 +93,9 @@ Version 1.3.1 (Apr 17, 2014)
 
 - Work on Multisite network.
 - Fix "new post" activities dropdown privacy as profile activites privacy.
+
+Version 1.3.2 (Mai 17, 2014)
+--------------------------------------------------------------
+- Fix issues when Buddypress Follow is activate 
+- Fix visibility of "Last update" activity on member header and members loop.
+- Beta Integration with buddypress-media plugin (rtMedia for WordPress, BuddyPress and bbPress).

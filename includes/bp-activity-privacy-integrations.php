@@ -60,11 +60,11 @@ if( function_exists('bp_follow_is_following') ) {
 
 	add_filter('bp_groups_activity_privacy_levels_filter', 'bp_get_profile__follow_groups_privacy_levels', 10, 1);
 	function bp_get_profile__follow_groups_privacy_levels($groups_activity_privacy_levels){
-		$profile_activity_privacy_levels [] = 'followers';
+		$groups_activity_privacy_levels [] = 'followers';
 		//followers in the group
-		$profile_activity_privacy_levels [] = 'groupfollowers';
+		$groups_activity_privacy_levels [] = 'groupfollowers';
 
-		return $profile_activity_privacy_levels;
+		return $groups_activity_privacy_levels;
 	}
 
 	//add_filter('bp_profile_activity_visibility_levels_filter', 'bp_get_profile_follow_activity_visibility_levels', 10, 1);
@@ -156,3 +156,260 @@ if( function_exists('bpfb_plugin_init') ) {
 	}
 	
 }
+
+
+
+
+// Integration with rTmedia
+
+/**
+ * Filter medias 
+ */
+
+add_action('rtmedia_before_media', 'bp_activity_privacy_rtmedia');
+add_action('rtmedia_after_media_gallery_title', 'bp_activity_privacy_rtmedia');
+
+/**
+ * Check the privacy for each medias and remove 
+ * the not authorized medias from media array
+ */
+function bp_activity_privacy_rtmedia(){
+	global $rtmedia_query;
+	have_rtmedia ();
+
+    $is_super_admin = is_super_admin();
+    $bp_displayed_user_id = bp_displayed_user_id();
+    $bp_loggedin_user_id = bp_loggedin_user_id();
+
+    if ( ( !empty($bp_displayed_user_id)  && $bp_displayed_user_id == $bp_loggedin_user_id ) ||  $is_super_admin )
+    	return;
+
+    $count_removed_media = 0;
+    if (!empty($rtmedia_query->media)) {
+		foreach ($rtmedia_query->media as $key => $media) {
+
+	        $activities = bp_activity_get_specific( array( 'activity_ids' => $media->activity_id ) );
+	        $activity = $activities["activities"][0];
+	        $remove_from_stream = bp_visibility_is_activity_invisible( $activity, $bp_loggedin_user_id, $is_super_admin, $bp_displayed_user_id );
+	        if ($remove_from_stream) {
+	        	unset($rtmedia_query->media[$key]);
+	            $count_removed_media++;
+	        }   
+		}
+
+		$rtmedia_query->media_count = $rtmedia_query->media_count - $count_removed_media;
+    }
+}
+
+/**
+ * Update media count user meta each time a user 
+ * visit the profile page.
+ */
+function bp_ap_rtmedia_update_member_medias_count(){
+	global $bp, $wpdb;
+
+    $is_super_admin = is_super_admin();
+    $bp_displayed_user_id = bp_displayed_user_id();
+    $bp_loggedin_user_id = bp_loggedin_user_id();
+    //if ($bp_displayed_user_id == $bp_loggedin_user_id)
+    //	return;
+
+    global $rtmedia, $rtmedia_query;
+
+    $allowed_media_types = array();
+	foreach ( $rtmedia->allowed_types as $value ) {
+		$allowed_media_types[ ] = $value['name'];
+	}
+	$allowed_media_types = implode("','", $allowed_media_types);
+	$allowed_media_types = "'".$allowed_media_types."'";
+
+    $table_name = $rtmedia_query->model->table_name;
+
+    $r = $wpdb->get_results( $wpdb->prepare( "SELECT activity_id, media_type 
+    	                       from {$table_name} 
+    	                      where media_type IN ({$allowed_media_types}) 
+    	                        and context = 'profile'
+    	                        and context_id = %d   
+        	                    and blog_id = %d", $bp_displayed_user_id, get_current_blog_id() ) );
+
+    $removed_media_count = array();
+    foreach ( $r as $my_r ) {
+   		$activities = bp_activity_get_specific( array( 'activity_ids' => $my_r->activity_id ) );
+        $activity = $activities["activities"][0];
+
+    	$remove_from_stream = bp_visibility_is_activity_invisible( $activity, $bp_loggedin_user_id, $is_super_admin, $bp_displayed_user_id );
+        
+        if ($remove_from_stream) {
+        	$removed_media_count[$my_r->media_type]++;
+        }
+  
+    }
+
+	$rtMediaNav = new RTMediaNav();
+    $rtMediaNav->refresh_counts( $bp_displayed_user_id, array( "context" => 'profile' ) );
+	$media_count = $rtMediaNav->get_counts( $bp_displayed_user_id, array( "context" => 'profile') );
+
+	var_dump($media_count);
+	$count = array();
+	$count[0] = new stdClass();
+	if ( !empty($media_count) ){
+		// merga and sum all media by privacy
+		foreach ($media_count as $media) {
+			foreach ($media as $key => $value) {
+				if ( !isset($count[0]->{$key}) ) 
+					$count[0]->{$key} = 0;
+
+				$count[0]->{$key} += $value;
+			}
+		}
+		$media_count = $count;
+	}
+
+	$total = 0;
+	if ( isset($removed_media_count)) {
+		foreach ($removed_media_count as $key => $value) {
+			$media_count[0]->{$key} -= $value;
+			$total += $media_count[0]->{$key};
+		}
+	}
+	//$media_count[0]->{'all'} = $total;
+
+	if ($total > 0) {
+		$slug = apply_filters('rtmedia_media_tab_slug', RTMEDIA_MEDIA_SLUG );
+
+		foreach ($bp->bp_nav as $key => $value) {
+			if ($value['slug'] == $slug) {
+				$bp->bp_nav[$key]['name'] = RTMEDIA_MEDIA_LABEL . '<span>' . $total . '</span>';
+				break;
+			}
+		}
+	}
+
+
+	// update metadata
+	update_user_meta ( $bp_displayed_user_id, 'rtmedia_counts_' . get_current_blog_id(), $media_count );
+}
+add_action('bp_after_member_header', 'bp_ap_rtmedia_update_member_medias_count');
+
+
+/**
+ * clear the media count user meta to force recomputing 
+ * it after each visit of profile page
+ */
+function bp_ap_rtmedia_reset_member_medias_count(){
+	global $bp;
+	$bp_displayed_user_id = bp_displayed_user_id();
+	update_user_meta ( $bp_displayed_user_id, 'rtmedia_counts_' . get_current_blog_id(), null );
+}
+add_action('bp_after_member_body', 'bp_ap_rtmedia_reset_member_medias_count');
+//add_action('rtmedia_after_media_gallery', 'bp_activity_privacy_rtmedia_reset_count');
+
+
+/**
+ * Update media count user meta each time a user 
+ * visit the profile page.
+ */
+function bp_ap_rtmedia_update_group_medias_count(){
+	global $bp, $wpdb;
+
+    $is_super_admin = is_super_admin();
+    $bp_group_id = bp_get_group_id();
+    $bp_loggedin_user_id = bp_loggedin_user_id();
+    //if ($bp_displayed_user_id == $bp_loggedin_user_id)
+    //	return;
+   
+    global $rtmedia, $rtmedia_query;
+
+    $allowed_media_types = array();
+	foreach ( $rtmedia->allowed_types as $value ) {
+		$allowed_media_types[ ] = $value['name'];
+	}
+	$allowed_media_types = implode("','", $allowed_media_types);
+	$allowed_media_types = "'".$allowed_media_types."'";
+
+    $table_name = $rtmedia_query->model->table_name;
+
+    $r = $wpdb->get_results( $wpdb->prepare( "SELECT activity_id, media_type 
+    	                       from {$table_name} 
+    	                      where media_type IN ({$allowed_media_types}) 
+    	                        and context = 'group' 
+    	                        and context_id = %d  
+    	                        and blog_id = %d", $bp_group_id, get_current_blog_id() ) );
+
+    $removed_media_count = array();
+    foreach ( $r as $my_r ) {
+   		$activities = bp_activity_get_specific( array( 'activity_ids' => $my_r->activity_id ) );
+        $activity = $activities["activities"][0];
+
+    	$remove_from_stream = bp_visibility_is_activity_invisible( $activity, $bp_loggedin_user_id, $is_super_admin, $bp_displayed_user_id );
+        
+        if ($remove_from_stream) {
+        	$removed_media_count[$my_r->media_type]++;
+        }
+
+    }
+
+	$rtMediaNav = new RTMediaNav();
+    $rtMediaNav->refresh_counts( $bp_group_id, array( "context" => 'group', 'context_id' => $bp_group_id ) );
+	$media_count = $rtMediaNav->get_counts( $bp_group_id, array( "context" => 'group', 'context_id' => $bp_group_id ) );
+
+	$count = array();
+	$count[0] = new stdClass();
+	if ( !empty($media_count) ){
+		// merga and sum all media by privacy
+		foreach ($media_count as $media) {
+			foreach ($media as $key => $value) {
+				if ( !isset($count[0]->{$key}) ) 
+					$count[0]->{$key} = 0;
+
+				$count[0]->{$key} += $value;
+			}
+		}
+		$media_count = $count;
+	}
+
+	$total = 0;
+	if ( isset($removed_media_count)) {
+		foreach ($removed_media_count as $key => $value) {
+			$media_count[0]->{$key} -= $value;
+			$total += $media_count[0]->{$key};
+		}
+
+		$slug = apply_filters('rtmedia_media_tab_slug', RTMEDIA_MEDIA_SLUG );
+		$nav = reset($bp->bp_options_nav);
+		$kkey = key($bp->bp_options_nav);
+		foreach ($nav as $key => $value) {
+
+			if ($value['slug'] == $slug)  {
+				$bp->bp_options_nav[$kkey][$key]['name'] = RTMEDIA_MEDIA_LABEL . '<span>' . $total . '</span>';
+				break;
+			}
+		}
+
+	}
+
+	// update metadata
+	groups_update_groupmeta ( $bp_group_id, 'rtmedia_counts_' . get_current_blog_id(), $media_count );
+
+}
+add_action('bp_after_group_header', 'bp_ap_rtmedia_update_group_medias_count');
+
+
+
+/**
+ * clear the media count user meta to force recomputing 
+ * it after each visit of profile page
+ */
+function bp_ap_rtmedia_reset_group_medias_count(){
+	global $bp, $groups_template;
+
+	$bp_group_id = bp_get_group_id();
+	if ( !isset($bp_group_id) ) {
+		$bp_group_id = $groups_template->group->group_id;
+	}
+	//  bp_get_group_id() return null in media tab ( $groups_template->group is  stdClass on bp_after_group_body)
+	
+	groups_update_groupmeta ( $bp_group_id, 'rtmedia_counts_' . get_current_blog_id(), null );
+
+}
+add_action('bp_after_group_body', 'bp_ap_rtmedia_reset_group_medias_count');
