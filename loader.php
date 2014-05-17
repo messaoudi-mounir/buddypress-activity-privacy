@@ -2,7 +2,7 @@
 /*
 Plugin Name: BuddyPress Activity Privacy
 Plugin URI: 
-Description: BP Activity Privacy add the ability for members to choose who can read his activity before it posted !
+Description: Add the ability for members to choose who can read/see his activities and media files.
 Version: 1.3.1
 Requires at least:  WP 3.4, BuddyPress 1.5
 Tested up to: BuddyPress 1.5, 2.0

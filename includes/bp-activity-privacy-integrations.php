@@ -162,18 +162,12 @@ if( function_exists('bpfb_plugin_init') ) {
 
 // Integration with rTmedia
 
-/**
- * Filter medias 
- */
-
-add_action('rtmedia_before_media', 'bp_activity_privacy_rtmedia');
-add_action('rtmedia_after_media_gallery_title', 'bp_activity_privacy_rtmedia');
 
 /**
  * Check the privacy for each medias and remove 
  * the not authorized medias from media array
  */
-function bp_activity_privacy_rtmedia(){
+function bp_ap_rtmedia(){
 	global $rtmedia_query;
 	have_rtmedia ();
 
@@ -190,16 +184,21 @@ function bp_activity_privacy_rtmedia(){
 
 	        $activities = bp_activity_get_specific( array( 'activity_ids' => $media->activity_id ) );
 	        $activity = $activities["activities"][0];
+	        
 	        $remove_from_stream = bp_visibility_is_activity_invisible( $activity, $bp_loggedin_user_id, $is_super_admin, $bp_displayed_user_id );
 	        if ($remove_from_stream) {
 	        	unset($rtmedia_query->media[$key]);
 	            $count_removed_media++;
 	        }   
 		}
+		//rearrange array keys
+		$rtmedia_query->media = array_values($rtmedia_query->media);
 
 		$rtmedia_query->media_count = $rtmedia_query->media_count - $count_removed_media;
     }
 }
+add_action('rtmedia_before_media', 'bp_ap_rtmedia');
+add_action('rtmedia_after_media_gallery_title', 'bp_ap_rtmedia');
 
 /**
  * Update media count user meta each time a user 
@@ -229,8 +228,9 @@ function bp_ap_rtmedia_update_member_medias_count(){
     	                       from {$table_name} 
     	                      where media_type IN ({$allowed_media_types}) 
     	                        and context = 'profile'
-    	                        and context_id = %d   
+    	                        and media_author = %d   
         	                    and blog_id = %d", $bp_displayed_user_id, get_current_blog_id() ) );
+
 
     $removed_media_count = array();
     foreach ( $r as $my_r ) {
@@ -246,10 +246,9 @@ function bp_ap_rtmedia_update_member_medias_count(){
     }
 
 	$rtMediaNav = new RTMediaNav();
-    $rtMediaNav->refresh_counts( $bp_displayed_user_id, array( "context" => 'profile' ) );
-	$media_count = $rtMediaNav->get_counts( $bp_displayed_user_id, array( "context" => 'profile') );
+    $rtMediaNav->refresh_counts( $bp_displayed_user_id, array( "context" => 'profile', 'media_author' => $bp_displayed_user_id )  );
+	$media_count = $rtMediaNav->get_counts( $bp_displayed_user_id );
 
-	var_dump($media_count);
 	$count = array();
 	$count[0] = new stdClass();
 	if ( !empty($media_count) ){
@@ -265,16 +264,16 @@ function bp_ap_rtmedia_update_member_medias_count(){
 		$media_count = $count;
 	}
 
-	$total = 0;
-	if ( isset($removed_media_count)) {
+	$total = null;
+	if ( !empty($removed_media_count) && !empty($media_count) ) {
+		$total = 0;
 		foreach ($removed_media_count as $key => $value) {
 			$media_count[0]->{$key} -= $value;
 			$total += $media_count[0]->{$key};
 		}
 	}
-	//$media_count[0]->{'all'} = $total;
 
-	if ($total > 0) {
+	if ( isset($total) ) {
 		$slug = apply_filters('rtmedia_media_tab_slug', RTMEDIA_MEDIA_SLUG );
 
 		foreach ($bp->bp_nav as $key => $value) {
@@ -284,7 +283,6 @@ function bp_ap_rtmedia_update_member_medias_count(){
 			}
 		}
 	}
-
 
 	// update metadata
 	update_user_meta ( $bp_displayed_user_id, 'rtmedia_counts_' . get_current_blog_id(), $media_count );
@@ -369,7 +367,7 @@ function bp_ap_rtmedia_update_group_medias_count(){
 	}
 
 	$total = 0;
-	if ( isset($removed_media_count)) {
+	if ( !empty($removed_media_count) && !empty($media_count) ) {
 		foreach ($removed_media_count as $key => $value) {
 			$media_count[0]->{$key} -= $value;
 			$total += $media_count[0]->{$key};
@@ -379,7 +377,6 @@ function bp_ap_rtmedia_update_group_medias_count(){
 		$nav = reset($bp->bp_options_nav);
 		$kkey = key($bp->bp_options_nav);
 		foreach ($nav as $key => $value) {
-
 			if ($value['slug'] == $slug)  {
 				$bp->bp_options_nav[$kkey][$key]['name'] = RTMEDIA_MEDIA_LABEL . '<span>' . $total . '</span>';
 				break;
@@ -413,3 +410,75 @@ function bp_ap_rtmedia_reset_group_medias_count(){
 
 }
 add_action('bp_after_group_body', 'bp_ap_rtmedia_reset_group_medias_count');
+
+
+
+function bp_ap_rtmedia_add_edit_fields(){
+	global $bp, $rtmedia_query, $rtmedia_media;
+
+	if ( isset($rtmedia_media) ) {
+		$activity_id = $rtmedia_media->activity_id;
+		/*
+		if ( isset( $rtmedia_query->query[ 'context' ] ) && $rtmedia_query->query[ 'context' ] == 'group' ){
+			//if context is group i.e editing a group media, dont show the privacy dropdown
+			// group media
+		} else {
+			// profile media
+		}
+		*/
+
+        $visibility = bp_activity_get_meta( $activity_id, 'activity-privacy' );
+
+        global $bp_activity_privacy;
+
+        if ($rtmedia_media->context == 'group')
+        	$group_id = $rtmedia_media->context_id;
+        else 
+        	$group_id = null;
+
+        //if is not a group activity or a new blog post
+        if( !isset( $group_id ) )
+            $visibility_levels = bp_get_profile_activity_visibility_levels();   
+        else
+            $visibility_levels = bp_get_groups_activity_visibility_levels();
+        
+        //sort visibility_levels by position 
+        uasort ($visibility_levels, 'bp_activity_privacy_cmp_position');
+
+        $html = '<select class="bp-ap-media-selectbox" name="visibility" >';
+        foreach ($visibility_levels as $visibility_level) {
+            if( $visibility_level["disabled"] )
+                continue;
+            $html .= '<option class="" ' . ( $visibility_level['id'] == $visibility ? " selected='selected'" : '' ) . ' value="' . $visibility_level["id"] . '">&nbsp;' . $visibility_level["label"] . '</option>';
+        }
+        $html .= '</select>';
+
+        $html = apply_filters( 'bp_get_update_activitiy_visibility_selectbox', $html );
+
+		echo "<div class=''><label for='privacy'>" . __( 'Privacy : ', 'rtmedia' ) . "</label>   " . $html . "  </div>";
+
+	}
+}
+add_action('rtmedia_add_edit_fields', 'bp_ap_rtmedia_add_edit_fields');
+
+/** 
+ * Update the privacy value of the activity related to the media
+ */
+function bp_ap_rtmedia_after_update_media( $media_id ){
+  if ( isset($media_id) ){
+  	global $bp, $wpdb, $rtmedia, $rtmedia_query;
+
+  	// get the activity id related to the media
+    $table_name = $rtmedia_query->model->table_name;
+    $activity_id = $wpdb->get_var( $wpdb->prepare( "SELECT activity_id 
+    	                       from {$table_name} 
+    	                      where id = %d", $media_id ) );
+
+    $visibility = esc_attr($_POST['visibility']);
+    bp_activity_update_meta( $activity_id, 'activity-privacy', $visibility );
+
+  }	
+
+}
+add_action('rtmedia_after_update_media', 'bp_ap_rtmedia_after_update_media');
+
