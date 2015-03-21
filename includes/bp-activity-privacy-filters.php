@@ -18,12 +18,17 @@ if ( !defined( 'ABSPATH' ) ) exit;
  */
 function bp_visibility_is_activity_invisible( $activity, $bp_loggedin_user_id, $is_super_admin ) {
 
-    if( $bp_loggedin_user_id == $activity->user_id ) 
-       return false;
+    if( ($bp_loggedin_user_id == $activity->user_id) || 
+        ($is_super_admin &&  bp_ap_is_admin_allowed_to_view_edit_privacy_levels()) 
+    ) 
+    return false;
 
     $visibility = bp_activity_get_meta( $activity->id, 'activity-privacy' );
+
+
+   // echo "---activity_id-'"  .$activity->id . " -----" . $visibility;
+
     $remove_from_stream = false;
-  
 
     switch ( $visibility ) {
         //Logged in users
@@ -116,8 +121,8 @@ function bp_visibility_is_activity_invisible( $activity, $bp_loggedin_user_id, $
     $remove_from_stream = apply_filters( 'bp_more_visibility_activity_filter', $remove_from_stream, $visibility, $activity);
 
     return $remove_from_stream;
-
 }
+
 /**
  * bp_visibility_activity_filter
  * @param  [type] $a          [description]
@@ -249,7 +254,7 @@ add_action( 'bp_has_activities', 'bp_visibility_activity_filter', 10, 2 );
 
 //add_filter( 'bp_get_last_activity', 'bp_activity_privacy_last_activity', 10, 1);
 function bp_activity_privacy_last_activity( $last_activity ){
-    if( isset($last_activity) ){
+    if( isset($last_activity) ) {
         $has_activities = false;
         $activities = new stdClass();
         $activities->activities = array();
@@ -265,7 +270,6 @@ function bp_activity_privacy_last_activity( $last_activity ){
 
 add_filter( 'bp_get_activity_latest_update', 'bp_activity_privacy_latest_update', 10, 1);
 function bp_activity_privacy_latest_update( $latest_update ){
-
     $user_id = bp_displayed_user_id();
 
     if ( bp_is_user_inactive( $user_id ) )
@@ -296,8 +300,11 @@ function bp_activity_privacy_latest_update( $latest_update ){
 // prevent members to see last activity on members loop
 add_filter('bp_get_member_latest_update', 'bp_activity_privacy_member_latest_update',10, 1);
 function bp_activity_privacy_member_latest_update( $update_content ){
-    global $members_template;
+    $is_super_admin = is_super_admin();
+    if( $is_super_admin && bp_ap_is_admin_allowed_to_view_edit_privacy_levels() )
+        return $update_content;
 
+    global $members_template;
     $latest_update = bp_get_user_meta( bp_get_member_user_id(), 'bp_latest_update' , true );
     if ( !empty( $latest_update ) ) {
         $activity_id = $latest_update['id'];
@@ -317,7 +324,6 @@ function bp_activity_privacy_member_latest_update( $update_content ){
          return '';
         */
 
-        $is_super_admin = is_super_admin();
         $bp_displayed_user_id = bp_displayed_user_id();
         $bp_loggedin_user_id = bp_loggedin_user_id();
     
@@ -325,27 +331,31 @@ function bp_activity_privacy_member_latest_update( $update_content ){
       
         if ($remove_from_stream) 
             return false;
-        
     }
 
     return $update_content;
 }
 
 // prevent members to see last activity on member header page
-add_filter('get_user_metadata', 'last_activimeta',10, 3);
-function last_activimeta( $retval, $object_id, $meta_key ){
+add_filter('get_user_metadata', 'bp_activity_privacy_latest_user_update',10, 3);
+function bp_activity_privacy_latest_user_update( $retval, $object_id, $meta_key ){
     if ($meta_key == 'bp_latest_update') {
-         remove_filter('get_user_metadata', 'last_activimeta');
-         $retval = get_metadata('user', $object_id, $meta_key);
-         if( isset($retval) && is_array($retval) ) {
-            $activity_id = $retval['id'];
+        remove_filter('get_user_metadata', 'bp_activity_privacy_latest_user_update');
+        
+        $is_super_admin = is_super_admin();
+        $bp_displayed_user_id = bp_displayed_user_id();
+        $bp_loggedin_user_id = bp_loggedin_user_id();
 
-            $is_super_admin = is_super_admin();
-            $bp_displayed_user_id = bp_displayed_user_id();
-            $bp_loggedin_user_id = bp_loggedin_user_id();
+        if($is_super_admin && bp_ap_is_admin_allowed_to_view_edit_privacy_levels())
+            return $retval;
+
+         $single = false;
+         $retval = get_metadata('user', $object_id, $meta_key,  $single);
+         if( isset($retval) && is_array($retval) ) {
+            $activity_id = $retval[0]['id'];
 
             $activities = bp_activity_get_specific( array( 'activity_ids' => $activity_id ) );
-            $activity = $activities["activities"][0];
+            $activity = $activities['activities'][0];
             $remove_from_stream = bp_visibility_is_activity_invisible( $activity, $bp_loggedin_user_id, $is_super_admin, $bp_displayed_user_id );
             if ($remove_from_stream) {
                 return false;
@@ -354,4 +364,28 @@ function last_activimeta( $retval, $object_id, $meta_key ){
          return $retval;
         
     }
+}
+
+
+
+add_filter('bp_activity_allowed_tags', 'bp_activity_privacy_override_allowed_tags');
+function bp_activity_privacy_override_allowed_tags(){
+    $activity_allowedtags['i']['class'] = array();
+    $activity_allowedtags['i']['title'] = array();
+    $activity_allowedtags['select']          = array();
+    $activity_allowedtags['select']['style'] = array();
+    $activity_allowedtags['select']['class'] = array();
+    $activity_allowedtags['select']['autocomplete'] = array();
+    $activity_allowedtags['option']          = array();
+    $activity_allowedtags['option']['value'] = array();
+    $activity_allowedtags['option']['selected'] = array();
+    $activity_allowedtags['option']['style'] = array();
+    $activity_allowedtags['option']['class'] = array();
+    $activity_allowedtags['div']          = array();
+    $activity_allowedtags['div']['style'] = array();
+    $activity_allowedtags['div']['class'] = array();
+    $activity_allowedtags['small']          = array();
+    $activity_allowedtags['small']['style'] = array();
+    
+    return $activity_allowedtags;
 }

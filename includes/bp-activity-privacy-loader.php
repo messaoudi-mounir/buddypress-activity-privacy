@@ -51,8 +51,8 @@ class BP_Activity_Privacy {
 				$this->groups_activity_privacy_levels [] = 'mentionedonly';			
 			}	
 		} else {
-			$this->profile_activity_privacy_levels [] = 'mentionedonly';
-			$this->groups_activity_privacy_levels [] = 'mentionedonly';		
+			//$this->profile_activity_privacy_levels [] = 'mentionedonly';
+			//$this->groups_activity_privacy_levels [] = 'mentionedonly';		
 		}
 
 		// Register the visibility levels
@@ -89,20 +89,21 @@ class BP_Activity_Privacy {
 			if ( bp_activity_do_mentions() ) {
 		        $this->profile_activity_visibility_levels['mentionedonly'] = array(
 		            'id'        => 'mentionedonly',
-		            'label'     => __( '@mentioned only', 'bp-activity-privacy' ),
+		            'label'     => __( 'Mentioned Only', 'bp-activity-privacy' ),
 		            'default'   => false,
 		            'position'  => 40,
 		            'disabled'  => false	            
 		        );			
 			}
 		}else {
+			/*
 	        $this->profile_activity_visibility_levels['mentionedonly'] = array(
 	            'id'        => 'mentionedonly',
-	            'label'     => __( '@mentioned only', 'bp-activity-privacy' ),
+	            'label'     => __( 'Mentioned only', 'bp-activity-privacy' ),
 	            'default'   => false,
 	            'position'  => 40,
 	            'disabled'  => false	            
-	        );				
+	        );	*/			
 		}
 			
 	    $this->profile_activity_visibility_levels['adminsonly'] = array(
@@ -115,7 +116,7 @@ class BP_Activity_Privacy {
 
 	    $this->profile_activity_visibility_levels['onlyme'] = array(
 	        'id'        => 'onlyme',
-	        'label'     => __( 'Only me', 'bp-activity-privacy' ),
+	        'label'     => __( 'Only Me', 'bp-activity-privacy' ),
 	        'default'   => false,
 	        'position'  => 60,
 	        'disabled'  => false	        
@@ -163,20 +164,21 @@ class BP_Activity_Privacy {
 			if ( bp_activity_do_mentions() ) {
 		        $this->groups_activity_visibility_levels['mentionedonly'] = array(
 		            'id'        => 'mentionedonly',
-		            'label'     => __( '@mentioned only', 'bp-activity-privacy' ),
+		            'label'     => __( 'Mentioned Only', 'bp-activity-privacy' ),
 		            'default'   => false,
 		            'position'  => 50,
 		            'disabled'  => false	            
 		        );			
 			}
 		} else {
+			/*
 	        $this->groups_activity_visibility_levels['mentionedonly'] = array(
 	            'id'        => 'mentionedonly',
-	            'label'     => __( '@mentioned only', 'bp-activity-privacy' ),
+	            'label'     => __( 'Mentioned only', 'bp-activity-privacy' ),
 	            'default'   => false,
 	            'position'  => 50,
 	            'disabled'  => false	            
-	        );				
+	        );	*/			
 		}
 
 	    if ( bp_is_active( 'groups' ) ) {
@@ -215,7 +217,7 @@ class BP_Activity_Privacy {
 
 	    $this->groups_activity_visibility_levels['onlyme'] = array(
 	        'id'        => 'onlyme',
-	        'label'     => __( 'Only me', 'bp-activity-privacy' ),
+	        'label'     => __( 'Only Me', 'bp-activity-privacy' ),
 	        'default'   => false,
 	        'position'  => 100,
 		    'disabled'  => false,        
@@ -252,4 +254,5 @@ function bp_activity_privacy_load_core() {
 	$bp_activity_privacy = new BP_Activity_Privacy;
 	do_action('bp_activity_privacy_load_core');
 }
-add_action( 'bp_loaded', 'bp_activity_privacy_load_core', 5 );
+//add_action( 'bp_loaded', 'bp_activity_privacy_load_core', 5 );
+add_action( 'bp_init', 'bp_activity_privacy_load_core', 5 );

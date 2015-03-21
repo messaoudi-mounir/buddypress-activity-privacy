@@ -48,7 +48,7 @@ class BPActivityPrivacy_Admin {
 		$this->settings_page = bp_core_do_network_admin() ? 'settings.php' : 'options-general.php';
 	    $hook = add_submenu_page( $this->settings_page, __( 'BuddyPress Activity Privacy', 'bp-activity-privacy' ), __( 'BP Activity Privacy', 'bp-activity-privacy' ), 'manage_options', 'bp-activity-privacy', array( &$this, 'admin_page' ) );
 
-	    add_action( "admin_print_styles-$hook", 'bp_core_add_admin_menu_styles' );
+	    //add_action( "admin_print_styles-$hook", 'bp_core_add_admin_menu_styles' );
 	    add_action( "admin_print_scripts-$hook", array( &$this, 'enqueue_scripts' ) );
 	    add_action( "admin_print_styles-$hook", array( &$this, 'enqueue_styles' ) );
 
@@ -82,6 +82,24 @@ class BPActivityPrivacy_Admin {
 	      check_admin_referer( 'bpap-settings' );
 
 	      if( isset( $_POST['bpap-submit'] ) ){
+	      	// settings 
+	      	$allow_admin_ve_privacy_levels =  ( $_POST['allow-admin-view-edit-privacy-levels'] )  ?  true : false;
+	      	bp_update_option( 'bp_ap_allow_admin_ve_pl', $allow_admin_ve_privacy_levels );
+	      
+	      	$allow_members_e_privacy_levels = ( $_POST['allow-members-edit-privacy-levels'] )  ? true : false;
+	      	bp_update_option( 'bp_ap_allow_members_e_pl', $allow_members_e_privacy_levels );
+	      
+			$use_fontawsome = ( $_POST['use-fontawsome'] )  ? true : false;
+	      	bp_update_option( 'bp_ap_use_fontawsome', $use_fontawsome );
+	      
+			$use_custom_styled_selectbox = ( $_POST['use-custom-styled-selectbox'] )  ? true : false;
+	      	bp_update_option( 'bp_ap_use_custom_styled_selectbox', $use_custom_styled_selectbox );
+	      
+			$show_privacy_levels_label = ( $_POST['show-privacy-levels-label'] )  ? true : false;
+	      	bp_update_option( 'bp_ap_show_privacy_ll', $show_privacy_levels_label );
+
+			$show_privacy_in_activity_meta = ( $_POST['show-privacy-in-activity-meta'] )  ? true : false;
+			bp_update_option( 'bp_ap_show_privacy_in_am', $show_privacy_in_activity_meta);
 
 	        $pavl = $_POST['pavl'];
 	        $pavl_enabled = $_POST['pavl_enabled'];
@@ -120,7 +138,7 @@ class BPActivityPrivacy_Admin {
 		          if ( bp_activity_do_mentions() ) {
 		              $profile_activity_visibility_levels['mentionedonly'] = array(
 		                  'id'        => 'mentionedonly',
-		                  'label'     => __( '@Mentioned Only', 'bp-activity-privacy' ),
+		                  'label'     => __( 'Mentioned Only', 'bp-activity-privacy' ),
 		                  'default'   => ( $pavl_default == 'mentionedonly')  ? true : false,
 		                  'position'  => 10*( 1 + array_search('mentionedonly', array_keys($pavl))),
 		                  'disabled'  => ( $pavl_enabled ['mentionedonly'] )  ? false : true
@@ -128,13 +146,14 @@ class BPActivityPrivacy_Admin {
 		          }
 
 	      	  } else {
+	      	  	/*
 	              $profile_activity_visibility_levels['mentionedonly'] = array(
 	                  'id'        => 'mentionedonly',
-	                  'label'     => __( '@Mentioned Only', 'bp-activity-privacy' ),
+	                  'label'     => __( 'Mentioned Only', 'bp-activity-privacy' ),
 	                  'default'   => ( $pavl_default == 'mentionedonly')  ? true : false,
 	                  'position'  => 10*( 1 + array_search('mentionedonly', array_keys($pavl))),
 	                  'disabled'  => ( $pavl_enabled ['mentionedonly'] )  ? false : true
-	              );      	  	
+	              ); */     	  	
 	      	  }
 
 	          $profile_activity_visibility_levels['adminsonly'] = array(
@@ -147,7 +166,7 @@ class BPActivityPrivacy_Admin {
 
 	          $profile_activity_visibility_levels['onlyme'] = array(
 	              'id'        => 'onlyme',
-	              'label'     => __( 'Only me', 'bp-activity-privacy' ),
+	              'label'     => __( 'Only Me', 'bp-activity-privacy' ),
 	              'default'   => ( $pavl_default == 'onlyme')  ? true : false,
 	              'position'  => 10*( 1 + array_search('onlyme', array_keys($pavl))),
 	              'disabled'  => ( $pavl_enabled ['onlyme'] )  ? false : true
@@ -211,7 +230,7 @@ class BPActivityPrivacy_Admin {
 	         if ( bp_activity_do_mentions() ) {
 	                $groups_activity_visibility_levels['mentionedonly'] = array(
 	                   'id'        => 'mentionedonly',
-	                   'label'     => __( '@Mentioned Only', 'bp-activity-privacy' ),
+	                   'label'     => __( 'Mentioned Only', 'bp-activity-privacy' ),
 	                   'default'   => ( $gavl_default == 'mentionedonly')  ? true : false,
 	                   'position'  => 10*( 1 + array_search('mentionedonly', array_keys($gavl))),
 	                   'disabled'  => ( $gavl_enabled ['mentionedonly'] )  ? false : true            
@@ -254,7 +273,7 @@ class BPActivityPrivacy_Admin {
 
 	        $groups_activity_visibility_levels['onlyme'] = array(
 	              'id'        => 'onlyme',
-	              'label'     => __( 'Only me', 'bp-activity-privacy' ),
+	              'label'     => __( 'Only Me', 'bp-activity-privacy' ),
 	              'default'   => ( $gavl_default == 'onlyme')  ? true : false,
 	              'position'  => 10*( 1 + array_search('onlyme', array_keys($gavl))),
 	              'disabled'  => ( $gavl_enabled ['onlyme'] )  ? false : true    
@@ -288,6 +307,13 @@ class BPActivityPrivacy_Admin {
 	          
 	          	bp_update_option( 'bp_ap_profile_activity_visibility_levels', $bp_activity_privacy->profile_activity_visibility_levels );
 	          	bp_update_option( 'bp_ap_groups_activity_visibility_levels', $bp_activity_privacy->groups_activity_visibility_levels );
+	        
+	      		bp_update_option( 'bp_ap_allow_admin_ve_pl', false );
+	     	    bp_update_option( 'bp_ap_allow_members_e_pl', true );
+	      		bp_update_option( 'bp_ap_use_fontawsome', true );
+	     	    bp_update_option( 'bp_ap_use_custom_styled_selectbox', true );
+	      		bp_update_option( 'bp_ap_show_privacy_ll', true );
+	      		bp_update_option( 'bp_ap_show_privacy_in_am', true);
 	        ?>
 	        <div id="message" class="updated"><p><?php _e( 'Settings reseted.', 'bp-activity-privacy' );?></p></div>
 	        <?php
@@ -301,7 +327,6 @@ class BPActivityPrivacy_Admin {
 	    	<?php screen_icon( 'buddypress' ); ?>
 	    	<h2><?php _e( 'BuddyPress Activity Privacy', 'bp-activity-privacy' ); ?> <sup>v <?php echo BP_ACTIVITY_PRIVACY_VERSION ?> </sup></h2>
 	     
-
 	      	<form method="post" action="">
 
 		      <h3><label><?php _e('Profil Activity privacy', 'bp-activity-privacy') ?></label></h3>     
@@ -309,6 +334,8 @@ class BPActivityPrivacy_Admin {
 		      <h4><?php _e('Please check the box to enable the privacy and Drag&Drop to sort :', 'bp-activity-privacy') ?></h4> 
 		      <?php 
 		      //$html = "<ul>";
+		      //
+		      $html = "";
 		      $profile_activity_visibility_levels = bp_get_profile_activity_visibility_levels();
 		      uasort ($profile_activity_visibility_levels, 'bp_activity_privacy_cmp_position');
 		      foreach ($profile_activity_visibility_levels as  $key => $pavl) {
@@ -345,7 +372,66 @@ class BPActivityPrivacy_Admin {
 		          echo $html;
 		          ?>  
 		      </div>
-	               
+
+			<?php
+		      	$allow_admin_ve_privacy_levels = bp_get_option('bp_ap_allow_admin_ve_pl');
+		      	$allow_members_e_privacy_levels = bp_get_option( 'bp_ap_allow_members_e_pl');
+				$use_fontawsome = bp_get_option( 'bp_ap_use_fontawsome');
+				$use_custom_styled_selectbox =bp_get_option('bp_ap_use_custom_styled_selectbox');
+				$show_privacy_levels_label = bp_get_option( 'bp_ap_show_privacy_ll');
+				$show_privacy_in_activity_meta = bp_get_option( 'bp_ap_show_privacy_in_am');
+			?>
+
+		    <h3><label><?php _e('Settings', 'bp-activity-privacy') ?></label></h3>     
+  				<h4><?php _e('Main settings', 'bp-activity-privacy') ?></h4> 
+				<table class="form-table">
+					<tbody><tr><th scope="row"><?php _e('Admin privileges', 'bp-activity-privacy') ?></th><td>
+					<input id="allow-admin-view-edit-privacy-levels" name="allow-admin-view-edit-privacy-levels" <?= ($allow_admin_ve_privacy_levels) ? 'checked' : ''; ?> type="checkbox" />
+					<label for="allow-admin-view-edit-privacy-levels"><?php _e('Allow admin to view and edit the prviacy of all activities', 'bp-activity-privacy') ?></label>
+
+					</td></tr><tr><th scope="row">Members privileges</th><td>
+					<input id="allow-members-edit-privacy-levels" name="allow-members-edit-privacy-levels" <?= ($allow_members_e_privacy_levels) ? 'checked' : ''; ?> type="checkbox" />
+					<label for="allow-members-edit-privacy-levels"><?php _e('Allow members to edit the privacy of their activities', 'bp-activity-privacy') ?></label>
+
+					</td></tr>
+					</tbody>
+				</table>
+				<h4><?php _e('UI settings', 'bp-activity-privacy') ?></h4>
+				<table class="form-table">
+					<tbody>
+					<tr>
+						<th scope="row"><?php _e('Font Awesome Icons', 'bp-activity-privacy') ?></th>
+						<td>
+						<input id="use-fontawsome" name="use-fontawsome" <?= ($use_fontawsome) ? 'checked' : ''; ?> type="checkbox" />
+						<label for="use-fontawsome"><?php _e('Use FontAwesome Icons', 'bp-activity-privacy') ?></label>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><?php _e('Custom styled selectbox', 'bp-activity-privacy') ?></th>
+						<td>
+						<input id="use-custom-styled-selectbox" name="use-custom-styled-selectbox" <?= ($use_custom_styled_selectbox) ? 'checked' : ''; ?> type="checkbox" />
+						<label for="use-custom-styled-selectbox"><?php _e('Use custom styled selectbox', 'bp-activity-privacy') ?></label>
+
+						</td>
+					</tr>
+
+					<tr>
+						<th scope="row"><?php _e('Privacy labels', 'bp-activity-privacy') ?></th>
+						<td>
+						<input id="show-privacy-levels-label" name="show-privacy-levels-label" <?= ($show_privacy_levels_label) ? 'checked' : ''; ?> type="checkbox">
+						<label for="show-privacy-levels-label"><?php _e('Show the privacy label in selectbox (Use FontAwesome Icons should be checked if this is unchecked)', 'bp-activity-privacy') ?></label>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><?php _e('Privacy in activity meta', 'bp-activity-privacy') ?></th>
+						<td>
+						<input id="show-privacy-in-activity-meta" name="show-privacy-in-activity-meta" <?= ($show_privacy_in_activity_meta) ? 'checked' : ''; ?> type="checkbox">
+						<label for="show-privacy-in-activity-meta"><?php _e('Show the privacy in activity meta', 'bp-activity-privacy') ?></label>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+
 		      <?php wp_nonce_field( 'bpap-settings' ) ?>
 		      <br />
 		      <input type="submit" name="bpap-submit" class="button-primary" value="<?php _e( "Save Settings", 'bp-activity-privacy' ) ?>" />
@@ -464,15 +550,20 @@ class BPActivityPrivacy_Admin {
 
 				<div class="feature-section">
 					<ul>
-						<li class=""><?php _e( 'The plugin work now on Multisite Network!', 'bp-activity-privacy' ); ?></li>
+						<li><?php _e( 'Allow admin to view and edit the prviacy of all activities (Check Admin privileges in plugin settings).', 'bp-activity-privacy' );?></li>
+						<li><?php _e( 'Admin now have a control to enable/disable the members to edit the privacy of their activities.', 'bp-activity-privacy' );?></li>
+						<li><?php _e( 'Admin now have a control to enable/disable the FontAwesome icon.', 'bp-activity-privacy' );?></li>
+						<li><?php _e( 'Admin now have a finer control to enable/disable FontAwesome icon.', 'bp-activity-privacy' );?></li>
+						<li><?php _e( 'Admin now have a control to enable/disable the custom styled selectbox.', 'bp-activity-privacy' );?></li>
+						<li><?php _e( 'Admin now have a control to show/hide printing the privacy of activities in their meta.', 'bp-activity-privacy' );?></li>
+						
 						<strong><?php _e( 'Updates before current version','bp-activity-privacy' ); ?></strong>
 						<br />
 						<br />	
-						<li><?php _e( 'A New privacy level (@mentioned only). When a member choose this privacy level, only mentioned members (and admin of course) can see the activity.', 'bp-activity-privacy' ); ?></li>
+						<li class=""><?php _e( 'The plugin work now on Multisite Network!', 'bp-activity-privacy' ); ?></li>
+						<li><?php _e( 'A New privacy level (Mentioned only). When a member choose this privacy level, only mentioned members (and admin of course) can see the activity.', 'bp-activity-privacy' ); ?></li>
 						<li><?php _e( '<strong>Remark:</strong> <i>Members mentioned in activity can see it\'s content whatever the privacy level.</i>', 'bp-activity-privacy' ); ?></li>
 						<li><?php _e( 'New Dropdown system with a nice icons ( By <a target="_BLANK" href="http://fontawesome.io/">Font Awesome</a> ).', 'bp-activity-privacy' ); ?></li>
-						<li><?php _e( 'Administrator now have a finer control to enable/disable the privacy levels, sort the privacy levels and change the default privacy level.', 'bp-activity-privacy' );?></li>
-						<li><?php printf( __( 'Finally version %s fixes a bug with "Last acitivity" visibility in the members directory and member profile page.', 'bp-activity-privacy' ), '1.3' );?></li>
 					</ul>
 				</div>
 			</div>
@@ -487,7 +578,7 @@ class BPActivityPrivacy_Admin {
 						<li><?php _e( 'Anyone', 'bp-activity-privacy' ); ?></li>
 						<li><?php _e( 'Logged In Users', 'bp-activity-privacy' ); ?></li>
 						<li><?php _e( 'My Friends', 'bp-activity-privacy' ); ?></li>
-						<li><?php _e( '@Mentioned Only', 'bp-activity-privacy' ); ?></li>
+						<li><?php _e( 'Mentioned Only', 'bp-activity-privacy' ); ?></li>
 						<li><?php _e( 'Admin Only', 'bp-activity-privacy' ); ?></li>
 						<li><?php _e( 'Only Me', 'bp-activity-privacy' ); ?></li>
 					</ul>
@@ -595,8 +686,13 @@ class BPActivityPrivacy_Admin {
   	}
 
   	function enqueue_styles() {
-   	 	wp_enqueue_style( 'bp-font-awesome-css', plugins_url( 'css/font-awesome/css/font-awesome.min.css' ,  __FILE__ )); 
+  		if(bp_ap_is_use_fontawsome()){
+   	 		wp_enqueue_style( 'bp-font-awesome-css', plugins_url( 'css/font-awesome/css/font-awesome.min.css' ,  __FILE__ )); 
+    	}
     	wp_enqueue_style( 'bp-activity-privacy-admin-css', plugins_url( 'css/admin.css' ,  __FILE__ )); 
-
   	}
-}  
+
+  	//@TODO
+  	function update(){
+  	}
+}

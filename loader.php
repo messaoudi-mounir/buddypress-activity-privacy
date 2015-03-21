@@ -3,9 +3,9 @@
 Plugin Name: BuddyPress Activity Privacy
 Plugin URI: 
 Description: Add the ability for members to choose who can read/see his activities and media files.
-Version: 1.3.1
+Version: 1.3.4
 Requires at least:  WP 3.4, BuddyPress 1.5
-Tested up to: BuddyPress 1.5, 2.0
+Tested up to: BuddyPress 1.5, 2.2.1
 License: GNU General Public License 2.0 (GPL) http://www.gnu.org/licenses/gpl.html
 Author: Meg@Info
 Author URI: http://profiles.wordpress.org/megainfo 
@@ -18,7 +18,7 @@ Domain Path: /languages
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /*************************************************************************************************************
- --- BuddyPress Activity Privacy 1.3.1 ---
+ --- BuddyPress Activity Privacy 1.3.4 ---
  *************************************************************************************************************/
 
 // Define a constant that can be checked to see if the component is installed or not.
@@ -26,7 +26,7 @@ define( 'BP_ACTIVITY_PRIVACY_IS_INSTALLED', 1 );
 
 // Define a constant that will hold the current version number of the component
 // This can be useful if you need to run update scripts or do compatibility checks in the future
-define( 'BP_ACTIVITY_PRIVACY_VERSION', '1.3.1' );
+define( 'BP_ACTIVITY_PRIVACY_VERSION', '1.3.4' );
 
 // Define a constant that we can use to construct file paths throughout the component
 define( 'BP_ACTIVITY_PRIVACY_PLUGIN_DIR', dirname( __FILE__ ) );
@@ -41,6 +41,8 @@ define( 'BP_ACTIVITY_PRIVACY_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 // Define a constant that we can use as plugin basename
 define( 'BP_ACTIVITY_PRIVACY_PLUGIN_BASENAME',  plugin_basename( __FILE__ ) );
 
+define( 'BP_ACTIVITY_PRIVACY_PLUGIN_DIR_PATH',  plugin_dir_path( __FILE__ ) );
+
 /**
  * textdomain loader.
  *
@@ -48,17 +50,20 @@ define( 'BP_ACTIVITY_PRIVACY_PLUGIN_BASENAME',  plugin_basename( __FILE__ ) );
  * Allows for a custom language file other than those packaged with the plugin.
  *
  * @uses load_textdomain() Loads a .mo file into WP
+ * @uses load_plugin_textdomain() Loads a .mo file into languages folder on plugin
  */ 
 function bp_activity_privacy_load_textdomain() {
-
 	$mofile		= sprintf( 'buddypress-activity-privacy-%s.mo', get_locale() );
+	
 	$mofile_global	= trailingslashit( WP_LANG_DIR ) . $mofile;
-	$mofile_local	= BP_ACTIVITY_PRIVACY_PLUGIN_DIR. '/languages/' . $mofile;
+	$mofile_local	= BP_ACTIVITY_PRIVACY_PLUGIN_DIR_PATH . 'languages/' . $mofile;
 
-	if ( is_readable( $mofile_global ) )
+	if ( is_readable( $mofile_global ) ) {
 		return load_textdomain( 'bp-activity-privacy', $mofile_global );
-	elseif ( is_readable( $mofile_local ) )
+	} elseif ( is_readable( $mofile_local ) ){
+		//return load_plugin_textdomain( 'bp-activity-privacy', false, $mofile_local );
 		return load_textdomain( 'bp-activity-privacy', $mofile_local );
+	}
 	else
 		return false;
 }

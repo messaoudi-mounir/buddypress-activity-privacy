@@ -15,7 +15,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 function bp_activity_privacy_register_actions() {
 	$actions = array(
 		// update filters
-		'update_activity_privacy'       => 'update_activity_privacy',
+		'update_activity_privacy'  => 'update_activity_privacy',
 	);
 
 	/**
@@ -64,7 +64,7 @@ function update_activity_privacy() {
         && ( $is_super_admin || ( $bp_loggedin_user_id == $activity_single->user_id ) ) ) {
     	
 	    bp_activity_update_meta( $activity_id, 'activity-privacy', $visibility );
-    	$visibility = bp_activity_get_meta( $activity_id, 'activity-privacy' );
+    	//$visibility = bp_activity_get_meta( $activity_id, 'activity-privacy' );
     }
 	exit;
 }

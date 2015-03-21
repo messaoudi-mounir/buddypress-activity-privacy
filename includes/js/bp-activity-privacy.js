@@ -2,7 +2,7 @@ if ( typeof jq == "undefined" )
 	var jq = jQuery;
 
 jq(document).ready( function() {
-
+	
 	jq.fn.extend({
         customStyle : function(options) {
 
@@ -35,6 +35,7 @@ jq(document).ready( function() {
 	        }
     }
     }); 
+    
 
 	jq('body').on('change', '.bp-ap-selectbox',  function(event) {
 		var target = jq(event.target);
@@ -45,7 +46,7 @@ jq(document).ready( function() {
 			var cookie = bp_get_cookies();
     	else 
     		var cookie = encodeURIComponent(document.cookie);
-    	
+
         jq.post( ajaxurl, {
 			action: 'update_activity_privacy',
 			'cookie': cookie,
@@ -92,7 +93,10 @@ jq(document).ready( function() {
 			}
 		}
 		jq('select#activity-privacy').next().remove();
-		jq('select#activity-privacy').customStyle('1');
+		if(visibility_levels.custom_selectbox) {
+			//jq('select#activity-privacy').customStyle('1');
+			jq('select.bp-ap-selectbox').customSelect();
+		}
 		jq(this).data('selected',item_id);
 	});
 	
@@ -193,12 +197,19 @@ jq(document).ready( function() {
 			//reset the privacy selection
 			jq("select#activity-privacy option[selected]").prop('selected', true).trigger('change');
 
-			jq('select.bp-ap-selectbox').customStyle('2');
+			if(visibility_levels.custom_selectbox) {
+				//jq('select.bp-ap-selectbox').customStyle('2');
+				jq('select.bp-ap-selectbox').customSelect();
+			}
 		});
 
 		return false;
 	});
 
-	jq('select#activity-privacy').customStyle('1');
-	jq('select.bp-ap-selectbox').customStyle('2');
+	if(visibility_levels.custom_selectbox) {
+		jq('select#activity-privacy').customSelect();
+		jq('select.bp-ap-selectbox').customSelect();
+		//jq('select#activity-privacy').customStyle('1');
+		//jq('select.bp-ap-selectbox').customStyle('2');
+	}
 });
