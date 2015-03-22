@@ -351,7 +351,7 @@ function bp_activity_privacy_latest_user_update( $retval, $object_id, $meta_key 
 
          $single = false;
          $retval = get_metadata('user', $object_id, $meta_key,  $single);
-         if( isset($retval) && is_array($retval) ) {
+         if( isset($retval) && is_array($retval) && !empty( $retval) ) {
             $activity_id = $retval[0]['id'];
 
             $activities = bp_activity_get_specific( array( 'activity_ids' => $activity_id ) );
@@ -366,10 +366,8 @@ function bp_activity_privacy_latest_user_update( $retval, $object_id, $meta_key 
     }
 }
 
-
-
 add_filter('bp_activity_allowed_tags', 'bp_activity_privacy_override_allowed_tags');
-function bp_activity_privacy_override_allowed_tags(){
+function bp_activity_privacy_override_allowed_tags($activity_allowedtags){
     $activity_allowedtags['i']['class'] = array();
     $activity_allowedtags['i']['title'] = array();
     $activity_allowedtags['select']          = array();
@@ -389,3 +387,7 @@ function bp_activity_privacy_override_allowed_tags(){
     
     return $activity_allowedtags;
 }
+
+
+add_filter( 'heartbeat_received', 'bp_activity_heartbeat_last_recorded', 10, 2 );
+add_filter( 'heartbeat_nopriv_received', 'bp_activity_heartbeat_last_recorded', 10, 2 );

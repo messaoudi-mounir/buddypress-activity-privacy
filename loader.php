@@ -3,7 +3,7 @@
 Plugin Name: BuddyPress Activity Privacy
 Plugin URI: 
 Description: Add the ability for members to choose who can read/see his activities and media files.
-Version: 1.3.4
+Version: 1.3.5dev
 Requires at least:  WP 3.4, BuddyPress 1.5
 Tested up to: BuddyPress 1.5, 2.2.1
 License: GNU General Public License 2.0 (GPL) http://www.gnu.org/licenses/gpl.html
@@ -18,7 +18,7 @@ Domain Path: /languages
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /*************************************************************************************************************
- --- BuddyPress Activity Privacy 1.3.4 ---
+ --- BuddyPress Activity Privacy 1.35dev ---
  *************************************************************************************************************/
 
 // Define a constant that can be checked to see if the component is installed or not.
@@ -26,7 +26,7 @@ define( 'BP_ACTIVITY_PRIVACY_IS_INSTALLED', 1 );
 
 // Define a constant that will hold the current version number of the component
 // This can be useful if you need to run update scripts or do compatibility checks in the future
-define( 'BP_ACTIVITY_PRIVACY_VERSION', '1.3.4' );
+define( 'BP_ACTIVITY_PRIVACY_VERSION', '1.3.5dev' );
 
 // Define a constant that we can use to construct file paths throughout the component
 define( 'BP_ACTIVITY_PRIVACY_PLUGIN_DIR', dirname( __FILE__ ) );

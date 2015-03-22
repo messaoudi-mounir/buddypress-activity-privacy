@@ -158,11 +158,15 @@ function bp_activitiy_privacy_activity_visibility_meta( $content ) {
         else
             $visibility_levels = bp_get_groups_activity_visibility_levels();
         
-
         global $bp;
+        $default_visibility = 'public';
         $visibility = bp_activity_get_meta( bp_get_activity_id(), 'activity-privacy' );
+       
 
-        $label = '';
+        if(!isset($visibility) || strlen($visibility) == 0)
+           $visibility = $default_visibility;
+      
+        $visibility_label = '';
         if(!bp_ap_is_use_fontawsome()) {
             $visibility_label = $visibility_levels[$visibility]['label'];
         }
