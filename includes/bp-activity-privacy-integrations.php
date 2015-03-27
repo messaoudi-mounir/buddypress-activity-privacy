@@ -66,7 +66,7 @@ if( function_exists('bp_follow_is_following') ) {
 		return $groups_activity_privacy_levels;
 	}
 
-	//add_filter('bp_profile_activity_visibility_levels_filter', 'bp_get_profile_follow_activity_visibility_levels', 10, 1);
+	add_filter('bp_profile_activity_visibility_levels_filter', 'bp_get_profile_follow_activity_visibility_levels', 10, 1);
 	function bp_get_profile_follow_activity_visibility_levels($profile_activity_visibility_levels){
 		$profile_activity_visibility_levels ['follow'] = array(
 		        'id'      => 'followers',
@@ -78,7 +78,7 @@ if( function_exists('bp_follow_is_following') ) {
 		return $profile_activity_visibility_levels;
 	}
 
-	//add_filter('bp_groups_activity_visibility_levels_filter', 'bp_get_groups_follow_activity_visibility_levels', 10, 1);
+	add_filter('bp_groups_activity_visibility_levels_filter', 'bp_get_groups_follow_activity_visibility_levels', 10, 1);
 	function bp_get_groups_follow_activity_visibility_levels($groups_activity_visibility_levels){
 		$groups_activity_visibility_levels ['followers'] = array(
 		        'id'      => 'followers',

@@ -3,7 +3,7 @@ Contributors: megainfo
 Tags: buddypress,activity,privacy,visibility,stream,private,public,only me,admins only,friends, followers,vie privée,confidentialité
 Requires at least: WordPress 3.4, BuddyPress 1.5
 Tested up to: WordPress 3.4.1 / BuddyPress 2.2.1
-Stable tag: 1.3.5dev
+Stable tag: 1.3.6
 
 
 == Description ==
@@ -85,6 +85,12 @@ Or In GitHub
 https://github.com/dzmounir/buddypress-activity-privacy
 
 == Changelog ==
+= 1.3.6 =
+- Fix integration with Buddypress Follow
+
+= 1.3.5 =
+- Fix bug activity detail links caused by overidding activity allowed_tags
+
 = 1.3.4 =
 - Admin have abitility to enable/disable FontAwsome icons.
 - Admin have abitility to enable/disable view and editing the privacy of all activities.
