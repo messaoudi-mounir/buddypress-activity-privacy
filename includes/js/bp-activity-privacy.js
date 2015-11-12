@@ -64,6 +64,7 @@ jq(document).ready( function() {
 	if ( 'border-box' !== jq( '#whats-new' ).css( 'box-sizing' ) ) {
 		jq('#whats-new').off('focus');
 		jq('#whats-new').on('focus', function(){
+			jq("#whats-new-options").css('height','auto');
 			jq("form#whats-new-form textarea").animate({
 				height:'50px'
 			});
