@@ -61,14 +61,15 @@ jq(document).ready( function() {
 	});
 
 	//fix the scroll problem
-    jq('#whats-new').off('focus');
-    jq('#whats-new').on('focus', function(){
-        jq("#whats-new-options").css('height','auto');
-        jq("form#whats-new-form textarea").animate({
-            height:'50px'
-        });
-        jq("#aw-whats-new-submit").prop("disabled", false);
-    });
+	if ( 'border-box' !== jq( '#whats-new' ).css( 'box-sizing' ) ) {
+		jq('#whats-new').off('focus');
+		jq('#whats-new').on('focus', function(){
+			jq("form#whats-new-form textarea").animate({
+				height:'50px'
+			});
+			jq("#aw-whats-new-submit").prop("disabled", false);
+		});
+	}
 
 	jq('span#activity-visibility').prependTo('div#whats-new-submit');
 	jq("input#aw-whats-new-submit").off("click");
