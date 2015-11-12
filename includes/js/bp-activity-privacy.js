@@ -188,12 +188,19 @@ jq(document).ready( function() {
 				jq("textarea#whats-new").val('');
 			}
 
-			jq("#whats-new-options").animate({
-				height:'0px'
-			});
-			jq("form#whats-new-form textarea").animate({
-				height:'20px'
-			});
+			if ( 'border-box' !== jq( '#whats-new' ).css( 'box-sizing' ) ) {
+				jq("#whats-new-options").animate({
+					height:'0px'
+				});
+				jq("form#whats-new-form textarea").animate({
+					height:'20px'
+				});
+			} else {
+				jq( '#whats-new' ).animate({
+					height: '2.2em'
+				})
+				jq( '#whats-new-options' ).slideUp();
+			}
 			jq("#aw-whats-new-submit").prop("disabled", true).removeClass('loading');
 
 			//reset the privacy selection
