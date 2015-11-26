@@ -25,9 +25,6 @@ function bp_visibility_is_activity_invisible( $activity, $bp_loggedin_user_id, $
 
     $visibility = bp_activity_get_meta( $activity->id, 'activity-privacy' );
 
-
-   // echo "---activity_id-'"  .$activity->id . " -----" . $visibility;
-
     $remove_from_stream = false;
 
     switch ( $visibility ) {
