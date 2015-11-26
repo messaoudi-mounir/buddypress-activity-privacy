@@ -92,7 +92,7 @@ function bp_update_activitiy_visibility_selectbox($content) {
 
         $html = '<select class="bp-ap-selectbox" autocomplete="off">';
         foreach ($visibility_levels as $visibility_level) {
-            if( $visibility_level["disabled"] )
+            if( isset($visibility_level["disabled"]) && $visibility_level["disabled"] )
                 continue;
             $html .= '<option class="fa fa-' . $visibility_level["id"] . '" ' . ( $visibility_level['id'] == $visibility ? " selected='selected'" : '' ) . ' value="' . $visibility_level["id"] . '">' . $visibility_level["label"] . '</option>';
         }

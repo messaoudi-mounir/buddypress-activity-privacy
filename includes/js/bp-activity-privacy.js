@@ -61,14 +61,30 @@ jq(document).ready( function() {
 	});
 
 	//fix the scroll problem
-    jq('#whats-new').off('focus');
+    //jq('#whats-new').off('focus');
+    /*
     jq('#whats-new').on('focus', function(){
         jq("#whats-new-options").css('height','auto');
         jq("form#whats-new-form textarea").animate({
-            height:'50px'
+            height:'3.8em'
         });
         jq("#aw-whats-new-submit").prop("disabled", false);
     });
+    */
+	//fix the scroll problem
+	if ( 'border-box' !== jq( '#whats-new' ).css( 'box-sizing' ) ) {
+		jq('#whats-new').off('focus');
+		jq('#whats-new').on('focus', function(){
+			jq("#whats-new-options").css('height','auto');
+
+			jq("form#whats-new-form textarea").animate({
+				height:'50px'
+			});
+			jq("#aw-whats-new-submit").prop("disabled", false);
+		});
+	}
+
+    
 
 	jq('span#activity-visibility').prependTo('div#whats-new-submit');
 	jq("input#aw-whats-new-submit").off("click");
@@ -186,12 +202,28 @@ jq(document).ready( function() {
 				jq("textarea#whats-new").val('');
 			}
 
+			/*
 			jq("#whats-new-options").animate({
 				height:'0px'
 			});
 			jq("form#whats-new-form textarea").animate({
 				height:'20px'
-			});
+			});*/
+
+			if ( 'border-box' !== jq( '#whats-new' ).css( 'box-sizing' ) ) {
+				jq("#whats-new-options").animate({
+					height:'0px'
+				});
+				jq("form#whats-new-form textarea").animate({
+					height:'20px'
+				});
+			} else {
+				jq( '#whats-new' ).animate({
+					height: '2.2em'
+				})
+				jq( '#whats-new-options' ).slideUp();
+			}
+			
 			jq("#aw-whats-new-submit").prop("disabled", true).removeClass('loading');
 
 			//reset the privacy selection

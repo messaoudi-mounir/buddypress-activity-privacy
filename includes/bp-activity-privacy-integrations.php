@@ -49,15 +49,16 @@ if( function_exists('bp_follow_is_following') ) {
 		return $remove_from_stream;
 	}
 
-
-	add_filter('bp_profile_activity_privacy_levels_filter', 'bp_get_profile__follow_activity_privacy_levels', 10, 1);
+	// @TODO this code should be removed  since the privacy levers are managed from admins
+	//add_filter('bp_profile_activity_privacy_levels_filter', 'bp_get_profile__follow_activity_privacy_levels', 10, 1);
 	function bp_get_profile__follow_activity_privacy_levels($profile_activity_privacy_levels){
 		$profile_activity_privacy_levels [] = 'followers';
 
 		return $profile_activity_privacy_levels;
 	}
 
-	add_filter('bp_groups_activity_privacy_levels_filter', 'bp_get_profile__follow_groups_privacy_levels', 10, 1);
+	// @TODO this code should be removed  since the privacy levers are managed from admins
+	//add_filter('bp_groups_activity_privacy_levels_filter', 'bp_get_profile__follow_groups_privacy_levels', 10, 1);
 	function bp_get_profile__follow_groups_privacy_levels($groups_activity_privacy_levels){
 		$groups_activity_privacy_levels [] = 'followers';
 		//followers in the group
@@ -66,7 +67,8 @@ if( function_exists('bp_follow_is_following') ) {
 		return $groups_activity_privacy_levels;
 	}
 
-	add_filter('bp_profile_activity_visibility_levels_filter', 'bp_get_profile_follow_activity_visibility_levels', 10, 1);
+	// @TODO this code should be removed  since the privacy levers are managed from admins
+	//add_filter('bp_profile_activity_visibility_levels_filter', 'bp_get_profile_follow_activity_visibility_levels', 10, 1);
 	function bp_get_profile_follow_activity_visibility_levels($profile_activity_visibility_levels){
 		$profile_activity_visibility_levels ['follow'] = array(
 		        'id'      => 'followers',
@@ -78,7 +80,8 @@ if( function_exists('bp_follow_is_following') ) {
 		return $profile_activity_visibility_levels;
 	}
 
-	add_filter('bp_groups_activity_visibility_levels_filter', 'bp_get_groups_follow_activity_visibility_levels', 10, 1);
+	// @TODO this code should be removed  since the privacy levers are managed from admins
+	//add_filter('bp_groups_activity_visibility_levels_filter', 'bp_get_groups_follow_activity_visibility_levels', 10, 1);
 	function bp_get_groups_follow_activity_visibility_levels($groups_activity_visibility_levels){
 		$groups_activity_visibility_levels ['followers'] = array(
 		        'id'      => 'followers',
@@ -114,7 +117,11 @@ if( function_exists('bpfb_plugin_init') ) {
 		text = form.find('textarea[name="whats-new"]');
 
 		//remove event handler previously attached to #bpfb_submit
-		jq("#bpfb_submit").die( "click" );
+		 try {
+			jq("#bpfb_submit").die( "click" );
+		 } catch(e) {
+			jq("#bpfb_submit").off( "click");
+		 }
 
 		jq(document).delegate("#bpfb_submit", 'click', function (event) {
 
