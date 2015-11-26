@@ -83,22 +83,22 @@ class BPActivityPrivacy_Admin {
 
 	      if( isset( $_POST['bpap-submit'] ) ){
 	      	// settings 
-	      	$allow_admin_ve_privacy_levels =  ( $_POST['allow-admin-view-edit-privacy-levels'] )  ?  true : false;
+	      	$allow_admin_ve_privacy_levels =  ( @$_POST['allow-admin-view-edit-privacy-levels'] )  ?  true : false;
 	      	bp_update_option( 'bp_ap_allow_admin_ve_pl', $allow_admin_ve_privacy_levels );
 	      
-	      	$allow_members_e_privacy_levels = ( $_POST['allow-members-edit-privacy-levels'] )  ? true : false;
+	      	$allow_members_e_privacy_levels = ( @$_POST['allow-members-edit-privacy-levels'] )  ? true : false;
 	      	bp_update_option( 'bp_ap_allow_members_e_pl', $allow_members_e_privacy_levels );
 	      
 			$use_fontawsome = ( $_POST['use-fontawsome'] )  ? true : false;
 	      	bp_update_option( 'bp_ap_use_fontawsome', $use_fontawsome );
 	      
-			$use_custom_styled_selectbox = ( $_POST['use-custom-styled-selectbox'] )  ? true : false;
+			$use_custom_styled_selectbox = ( @$_POST['use-custom-styled-selectbox'] )  ? true : false;
 	      	bp_update_option( 'bp_ap_use_custom_styled_selectbox', $use_custom_styled_selectbox );
 	      
-			$show_privacy_levels_label = ( $_POST['show-privacy-levels-label'] )  ? true : false;
+			$show_privacy_levels_label = ( @$_POST['show-privacy-levels-label'] )  ? true : false;
 	      	bp_update_option( 'bp_ap_show_privacy_ll', $show_privacy_levels_label );
 
-			$show_privacy_in_activity_meta = ( $_POST['show-privacy-in-activity-meta'] )  ? true : false;
+			$show_privacy_in_activity_meta = ( @$_POST['show-privacy-in-activity-meta'] )  ? true : false;
 			bp_update_option( 'bp_ap_show_privacy_in_am', $show_privacy_in_activity_meta);
 
 	        $pavl = $_POST['pavl'];
@@ -374,12 +374,12 @@ class BPActivityPrivacy_Admin {
 		      </div>
 
 			<?php
-		      	$allow_admin_ve_privacy_levels = bp_get_option('bp_ap_allow_admin_ve_pl');
-		      	$allow_members_e_privacy_levels = bp_get_option( 'bp_ap_allow_members_e_pl');
-				$use_fontawsome = bp_get_option( 'bp_ap_use_fontawsome');
-				$use_custom_styled_selectbox =bp_get_option('bp_ap_use_custom_styled_selectbox');
-				$show_privacy_levels_label = bp_get_option( 'bp_ap_show_privacy_ll');
-				$show_privacy_in_activity_meta = bp_get_option( 'bp_ap_show_privacy_in_am');
+		      	$allow_admin_ve_privacy_levels = bp_ap_is_admin_allowed_to_view_edit_privacy_levels();
+		      	$allow_members_e_privacy_levels = bp_ap_is_members_allowed_to_edit_privacy_levels();
+				$use_fontawsome = bp_ap_is_use_fontawsome();
+				$use_custom_styled_selectbox = bp_ap_is_use_custom_styled_selectbox();
+				$show_privacy_levels_label = bp_ap_show_privacy_levels_label();
+				$show_privacy_in_activity_meta = bp_ap_show_privacy_in_activity_meta();
 			?>
 
 		    <h3><label><?php _e('Settings', 'bp-activity-privacy') ?></label></h3>     

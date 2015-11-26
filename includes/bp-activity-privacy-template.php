@@ -70,7 +70,7 @@ function bp_profile_activity_visibility() {
 	    $html = '<select name="activity-privacy" id="activity-privacy">';
 	    $html .= '<option selected disabled>' . __( 'Who can see this?', 'bp-activity-privacy' )  .'</option>';
 	    foreach ($visibility_levels as $visibility_level) {
-	    	if( $visibility_level["disabled"] )
+	    	if( isset($visibility_level["disabled"]) && $visibility_level["disabled"] )
 	    		continue;
 	        $html .= '<option class="fa fa-' . $visibility_level["id"] . '" ' . ( $visibility_level['default'] == true ? " selected='selected'" : '' ) . ' value="' . $visibility_level["id"] . '">' . $visibility_level["label"] . '</option>';
 	    }
@@ -97,7 +97,7 @@ function bp_groups_activity_visibility() {
 	    $html = '<select name="activity-privacy" id="activity-privacy">';
 	    $html .= '<option selected disabled>' . __( 'Who can see this?', 'bp-activity-privacy' )  .'</option>';
 	    foreach ($visibility_levels as $visibility_level) {
-	    	if( $visibility_level["disabled"] )
+	    	if( isset($visibility_level["disabled"]) && $visibility_level["disabled"])
 	    		continue;
 	   
 	        $html .= '<option  class="fa fa-' . $visibility_level["id"] . '" ' .  ( $visibility_level['default'] == true ? " selected='selected'" : '' ) . ' value="' . $visibility_level["id"] . '">' . $visibility_level["label"] . '</option>';
