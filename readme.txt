@@ -3,7 +3,7 @@ Contributors: megainfo
 Tags: buddypress,activity,privacy,visibility,stream,private,public,only me,admins only,friends, followers,vie privée,confidentialité
 Requires at least: WordPress 3.4, BuddyPress 1.5
 Tested up to: WordPress 4.3.1 / BuddyPress 2.4.0
-Stable tag: 1.3.7-SNAPSHOT
+Stable tag: 1.3.8-SNAPSHOT
 
 
 == Description ==
@@ -86,7 +86,10 @@ https://github.com/dzmounir/buddypress-activity-privacy
 
 == Changelog ==
 
-=  1.3.7 = 
+= 1.3.8-SNAPSHOT = 
+- Fix issue on privacy select option, click not work. 
+
+= 1.3.7 = 
 --------------------------------------------------------------
 - Fix "Post update" button and select options does not uppear.
 - Fix integration with Buddypress Follow duplicate entry.
