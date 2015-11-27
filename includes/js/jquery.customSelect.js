@@ -42,7 +42,7 @@
                 
                 setTimeout(function () {
                     customSelectSpan.removeClass(getClass('Open'));
-                    $(document).off('mouseup.customSelect');                  
+                    $(document).off('mouseup.customSelect');                 
                 }, 60);
             },
             getClass = function(suffix){
@@ -57,8 +57,7 @@
                     customIconInnerSpan = $('<i />'),
                     dropdownIcon = $('<i class="fa fa-caret-down"></i>'),
                     customSelectSpan = $('<span />');
-                   ;
-
+  
                 $select.after(customSelectSpan.append(customIconInnerSpan).append(customSelectInnerSpan).append(dropdownIcon));
                 
                 customSelectSpan.addClass(prefix);
@@ -75,11 +74,20 @@
                     .on('render.customSelect', function () {
                         changed($select,customSelectSpan);
                         $select.css('width','');	
+                        
+                         // fix  click issue when #whats-new-options is hidden (since bp 2.4.0) outerWidth = 0 
+                        var whatsNewOptionsIsHidden = false;       
+                        if($select.attr('id') == 'activity-privacy' && $("#whats-new-options").is(":hidden")){
+                            $("#whats-new-options").css('display','block');
+                            whatsNewOptionsIsHidden = true;  
+                            console.log("whatsNewOptionsIsHidden true");
+                       
+                        }
 
                         var selectBoxWidth = parseInt($select.outerWidth(), 10) -
                                 (parseInt(customSelectSpan.outerWidth(), 10) -
                                     parseInt(customSelectSpan.width(), 10));
-                        
+
                         // Set to inline-block before calculating outerHeight
                         customSelectSpan.css({
                             display: 'inline-block'
@@ -106,6 +114,12 @@
                             height:               selectBoxHeight,
                             fontSize:             customSelectSpan.css('font-size')
                         });
+
+                        // reset #what-news-options display 
+                        if(whatsNewOptionsIsHidden) {
+                            $("#whats-new-options").css('display','none');
+                        }
+
                     })
                     .on('change.customSelect', function () {
                         customSelectSpan.addClass(getClass('Changed'));
